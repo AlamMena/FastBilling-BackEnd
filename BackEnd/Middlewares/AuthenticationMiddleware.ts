@@ -30,7 +30,7 @@ async function Login() {
 async function AuthorizationHandler(req: Request, resp: Response, next: NextFunction) {
 
     // anonymous api paths
-    const anonymousPaths = ['/', '/api/v1/companies'];
+    const anonymousPaths = ['/', '/api/v1/company', '/api/v1/companies'];
 
     // verifing if the current path need token validations
     if (!anonymousPaths.includes(req.path)) {

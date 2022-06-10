@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenerateValidationResponse = void 0;
+exports.ErrorResponse = exports.GenerateValidationResponse = void 0;
 function GenerateValidationResponse(params) {
     var _a, _b;
     let response = {
@@ -10,3 +10,10 @@ function GenerateValidationResponse(params) {
     return response;
 }
 exports.GenerateValidationResponse = GenerateValidationResponse;
+class ErrorResponse {
+    constructor(message, code) {
+        this.Message = message !== null && message !== void 0 ? message : "An error has ocurred";
+        this.Code = code !== null && code !== void 0 ? code : 500;
+    }
+}
+exports.ErrorResponse = ErrorResponse;

@@ -16,5 +16,16 @@ function GenerateValidationResponse(params?: ValidationResponse) {
     return response;
 }
 
+class ErrorResponse {
 
-export { ValidationResponse, GenerateValidationResponse }
+    Message?: String
+    Code?: Number
+
+    constructor(message?: String, code?: Number) {
+
+        this.Message = message ?? "An error has ocurred"
+        this.Code = code ?? 500
+    }
+
+}
+export { ValidationResponse, GenerateValidationResponse, ErrorResponse }

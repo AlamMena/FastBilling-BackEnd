@@ -1,6 +1,9 @@
-interface TenantModel extends CoreEntity {
+import { Schema } from "mongoose";
+import CoreEntity from "./CoreModel";
 
-    CompanyId: string,
-    BranchId?: string
+const TenantModel = new Schema({
+    CompanyId: String,
+    BranchId: String
+})
 
-}
+export default TenantModel;
