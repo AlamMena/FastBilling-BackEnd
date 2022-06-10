@@ -1,6 +1,6 @@
 interface TenantModel extends CoreEntity {
 
-    companyId: string,
-    branchId?: string
+    CompanyId: string,
+    BranchId?: string
 
 }

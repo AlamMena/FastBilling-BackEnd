@@ -35,7 +35,7 @@ function AuthorizationHandler(req, resp, next) {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         // anonymous api paths
-        const anonymousPaths = ['/test', '/api/v1/companies'];
+        const anonymousPaths = ['/', '/api/v1/companies'];
         // verifing if the current path need token validations
         if (!anonymousPaths.includes(req.path)) {
             try {

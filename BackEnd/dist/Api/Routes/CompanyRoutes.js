@@ -4,5 +4,5 @@ const express_1 = require("express");
 const CompanyController_1 = require("../Controllers/CompanyController");
 const companyController = new CompanyController_1.CompanyController();
 const router = (0, express_1.Router)();
-router.route('/').get(companyController.CreateAsync);
+router.route('/').get(companyController.GetMongoose);
 exports.default = router;

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoreController = void 0;
 class CoreController {
     CreateAsync(req, res) {
+        const { name } = req.body;
         return res.send({ repository: "my repo" });
     }
     UpdateAsync(entity) {
