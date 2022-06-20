@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const CompanySchema_1 = __importDefault(require("../../Data/Schemas/CompanySchema"));
 const CoreController_1 = require("./CoreController");
 class CompanyController extends CoreController_1.CoreController {
-    constructor() {
-        super(CompanySchema_1.default, 'Companies');
+    constructor(modelSchema, collectionName) {
+        super(modelSchema, collectionName);
     }
 }
-exports.default = new CompanyController();
+exports.default = new CompanyController(CompanySchema_1.default, 'Companies');
