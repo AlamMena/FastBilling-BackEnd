@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.all("*", AuthorizationHandler);
+// // app.all("*", AuthorizationHandler);
 
 app.use('/api/v1/', CompanyRoutes);
 app.use('/api/v1/', ProductRoutes);

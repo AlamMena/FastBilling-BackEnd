@@ -6,8 +6,8 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const AuthenticationMiddleware_1 = __importDefault(require("./Middlewares/AuthenticationMiddleware"));
 const CompanyRoutes_1 = __importDefault(require("./Api/Routes/CompanyRoutes"));
+const ProductRoutes_1 = __importDefault(require("./Api/Routes/ProductRoutes"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 dotenv_1.default.config();
@@ -21,5 +21,6 @@ app.listen(PORT, () => {
 });
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
-app.all("*", AuthenticationMiddleware_1.default);
+// // app.all("*", AuthorizationHandler);
 app.use('/api/v1/', CompanyRoutes_1.default);
+app.use('/api/v1/', ProductRoutes_1.default);
