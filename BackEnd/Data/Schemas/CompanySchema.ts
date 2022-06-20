@@ -6,9 +6,16 @@ const CompanySchema = new Schema({
     Identification: { type: String, required: true },
     Adderess: { type: String, required: true },
     PhoneNumber: { type: String, required: true },
+    
     IsDeleted: { type: Boolean },
+
     CreatedAt: { type: Date },
-    CreatedBy: { type: String }
+    CreatedBy: { type: String },
+
+    UpdatedAt: { type: Date },
+    UpdatedBy: { type: String },
+
+
 });
 
 // const CompanyDAO = mongoose.model('Companies', CompanySchema);

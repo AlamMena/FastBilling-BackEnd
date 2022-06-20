@@ -23,7 +23,7 @@ class CoreController {
     GetAsync(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const entity = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
+                const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
                 // getting values
                 const page = parseInt(req.query.page);
                 const limit = parseInt(req.query.limit);
@@ -35,7 +35,7 @@ class CoreController {
                     const error = new ValidationHandler_1.ErrorResponse('Invalid limit', 400);
                     return res.status(400).send(error);
                 }
-                const companies = yield entity.find().skip((page - 1) * limit).limit(limit);
+                const companies = yield model.find().skip((page - 1) * limit).limit(limit);
                 if (companies.length === 0) {
                     return res.status(204).send([]);
                 }
@@ -67,12 +67,37 @@ class CoreController {
     }
     UpdateAsync(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            return res.status(404);
+            try {
+                const { _id } = req.body;
+                if (_id === undefined) {
+                    return res.status(404).send({ message: "Resource not found" });
+                }
+                const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
+                const response = yield model.updateOne({ _id: _id }, { $set: req.body });
+                return res.status(200).send(response);
+            }
+            catch (error) {
+                console.log(error);
+                return res.status(400).send(error);
+            }
         });
     }
     DeleteAsync(req, res, next) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            return res.status(404);
+            try {
+                const { id } = req.query;
+                if (id === undefined) {
+                    return res.status(404).send({ message: "Resource not found" });
+                }
+                const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
+                const data = { IsDeleted: true, UpdatedBy: (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1], UpdatedAt: new Date().getDate() };
+                const response = yield model.updateOne({ _id: id }, { $set: data });
+                return res.status(200).send(response);
+            }
+            catch (error) {
+                return res.status(400).send(error);
+            }
         });
     }
     GetByIdAsync(req, res, next) {

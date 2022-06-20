@@ -8,7 +8,9 @@ const CompanySchema = new mongoose_1.Schema({
     PhoneNumber: { type: String, required: true },
     IsDeleted: { type: Boolean },
     CreatedAt: { type: Date },
-    CreatedBy: { type: String }
+    CreatedBy: { type: String },
+    UpdatedAt: { type: Date },
+    UpdatedBy: { type: String },
 });
 // const CompanyDAO = mongoose.model('Companies', CompanySchema);
 exports.default = CompanySchema;

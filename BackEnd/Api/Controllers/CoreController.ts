@@ -19,7 +19,7 @@ export class CoreController {
 
         try {
 
-            const entity = mongoose.model(this.CollectionName, this.ModelSchema);
+            const model = mongoose.model(this.CollectionName, this.ModelSchema);
 
             // getting values
             const page: number = parseInt(req.query.page as string)
@@ -35,7 +35,7 @@ export class CoreController {
                 return res.status(400).send(error)
             }
 
-            const companies = await entity.find().skip((page - 1) * limit).limit(limit);
+            const companies = await model.find().skip((page - 1) * limit).limit(limit);
 
             if (companies.length === 0) {
                 return res.status(204).send([]);
@@ -75,11 +75,51 @@ export class CoreController {
 
     }
     async UpdateAsync(req: Request, res: Response, next: NextFunction) {
-        return res.status(404);
+
+        try {
+
+            const { _id } = req.body;
+
+            if (_id === undefined) {
+                return res.status(404).send({ message: "Resource not found" });
+            }
+
+            const model = mongoose.model(this.CollectionName, this.ModelSchema);
+
+            const response = await model.updateOne({ _id: _id }, { $set: req.body });
+            return res.status(200).send(response);
+
+        } catch (error) {
+
+            console.log(error);
+            return res.status(400).send(error);
+        }
+
     }
 
     async DeleteAsync(req: Request, res: Response, next: NextFunction) {
-        return res.status(404);
+
+        try {
+
+            const { id } = req.query;
+
+            if (id === undefined) {
+                return res.status(404).send({ message: "Resource not found" });
+            }
+
+            const model = mongoose.model(this.CollectionName, this.ModelSchema);
+
+            const data = { IsDeleted: true, UpdatedBy: req.headers['authorization']?.split(' ')[1], UpdatedAt: new Date().getDate() }
+
+            const response = await model.updateOne({ _id: id }, { $set: data });
+
+            return res.status(200).send(response);
+
+        } catch (error) {
+
+            return res.status(400).send(error);
+        }
+
     }
 
     async GetByIdAsync(req: Request, res: Response, next: NextFunction) {
