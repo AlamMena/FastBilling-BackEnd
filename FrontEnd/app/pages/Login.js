@@ -18,20 +18,13 @@ export default function Login() {
     try {
       console.log(data);
       const { email, password } = data;
-      const response = signInWithEmailAndPassword(auth, email, password);
-      console.log(response);
-    } catch (error) {}
-
-    // .then((userCredential) => {
-    //   // Signed in
-    //   const user = userCredential.user;
-    //   // ...
-    // })
-    // .catch((error) => {
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   console.log(errorMessage);
-    // });
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      const tokenExpirationTime = response.user.stsTokenManager.expirationTime;
+      console.log(tokenExpirationTime);
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.Message;
+    }
   };
 
   return (
