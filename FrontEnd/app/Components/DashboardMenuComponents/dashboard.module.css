@@ -1,0 +1,12 @@
+.dashboard_menu {
+    @apply  h-screen ;
+ }
+
+ .dashboard_burger {
+    @apply sm:block lg:hidden items-center;
+ }
+
+ .dashboard_elements{
+    @apply hidden flex flex-col justify-evenly gap-9 bg-white;
+ }
+ 
