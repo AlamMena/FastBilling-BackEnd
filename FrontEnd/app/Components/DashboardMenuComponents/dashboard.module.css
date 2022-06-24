@@ -1,5 +1,5 @@
 .dashboard {
-    @apply  h-screen lg:w-48 sm:w-16;
+    @apply  h-screen lg:w-48 sm:w-16 lg:bg-white;
  }
 
  .dashboard_burger {
@@ -7,7 +7,7 @@
  }
 
  .dashboard_elements{
-    @apply  flex flex-col gap-12 text-xs p-1 h-screen bg-white lg:block text-gray-400;
+    @apply  flex flex-col gap-12 text-xs p-1 h-screen bg-white  text-gray-400 tracking-wider font-semibold;
  }
 
  .dashboard_menu {
