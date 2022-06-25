@@ -1,16 +1,31 @@
+ /* Dashboard  */
 .dashboard {
-    @apply  h-screen lg:w-48 sm:w-16 lg:bg-white;
- }
-
- .dashboard_burger {
-    @apply sm:block lg:hidden items-center p-5;
- }
-
- .dashboard_elements{
-    @apply  flex flex-col gap-12 text-xs p-1 h-screen bg-white  text-gray-400 tracking-wider font-semibold;
+    @apply  h-screen  ;
  }
 
  .dashboard_menu {
-    @apply hidden lg:block;
+    @apply sm:block items-center mt-5;
+ }
+
+ /* Dashboard Elements  */
+
+ .dashboard_elements{
+    @apply  flex flex-col gap-12  h-screen   ;
+ }
+
+ .dashboard_elements_p {
+    @apply hidden md:block text-xs lg:text-sm font-semibold ;
+ }
+
+ .dashboard__element {
+    @apply flex flex-row space-x-3 justify-center text-gray-400 items-center  tracking-wider py-5 ;
+ }
+
+ /* Dasboard Image  */
+ .dashboard_img {
+    @apply  w-24 md:w-36 lg:w-40 pt-4;
+ }
+ .dashboard_img_container{
+    @apply flex justify-center 
  }
  
