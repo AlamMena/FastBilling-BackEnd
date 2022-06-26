@@ -8,10 +8,10 @@ export default function Dashboard() {
     // <Menu />
     //   </div>
     <div className="flex ">
-      <div className=" absolute bg-white">
+      <div className=" absolute bg-white p-4 md:w-28 lg:w-44">
         <Menu />
       </div>
-      <div className=" ml-44">
+      <div className="ml-16 md:ml-32 lg:ml-48">
         <p>Component 2</p>
       </div>
     </div>

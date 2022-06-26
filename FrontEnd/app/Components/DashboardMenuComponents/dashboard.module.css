@@ -1,10 +1,10 @@
  /* Dashboard  */
 .dashboard {
-    @apply  h-screen  ;
+    @apply  h-screen  hidden md:block ;
  }
 
  .dashboard_menu {
-    @apply sm:block items-center mt-5;
+    @apply sm:block items-center mt-5 ;
  }
 
  /* Dashboard Elements  */
@@ -14,16 +14,16 @@
  }
 
  .dashboard_elements_p {
-    @apply hidden md:block text-xs lg:text-sm font-semibold ;
+    @apply hidden lg:block text-xs lg:text-sm font-semibold ;
  }
 
  .dashboard__element {
-    @apply flex flex-row space-x-3 justify-center text-gray-400 items-center  tracking-wider py-5 ;
+    @apply flex flex-row space-x-3  text-gray-400 lg:items-center lg:justify-start md:justify-center tracking-wider py-5 lg:ml-4 ;
  }
 
  /* Dasboard Image  */
  .dashboard_img {
-    @apply  w-24 md:w-36 lg:w-40 pt-4;
+    @apply  w-16 md:w-32 lg:w-40 pt-4;
  }
  .dashboard_img_container{
     @apply flex justify-center 
