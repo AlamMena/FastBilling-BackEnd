@@ -8,12 +8,13 @@ import {
   AiOutlineFundView,
   AiOutlinePieChart,
   AiOutlineHome,
+  AiOutlineLogout,
 } from "react-icons/ai";
 
 export default function Menu() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  // Menu Icons which you can close and open the sidebar when the screen is on phone
+  // Menu Icons which you can close and open the sidebar when the screen size is sm
   const burguerMenu = (
     <div>
       <AiOutlineMenu
@@ -55,35 +56,51 @@ export default function Menu() {
     },
   ];
 
-  // SideBar Data Mapping
+  // SideBar Data rendering
   const elements = SideBarData.map((item, index) => {
     return (
-      <div key={index} className={styles.dashboard__element}>
-        {item.icon}
+      <div key={index} className={`${styles["dashboard__element"]}`}>
+        <div className={styles.dashboard_icons}>{item.icon}</div>
         <p className={styles.dashboard_elements_p}>{item.title}</p>
       </div>
     );
   });
 
+  // Side Bar button
+  const button = (
+    <div className="flex justify-center ">
+      <button className={styles.dashboard_button}>
+        <p className="hidden lg:block">Log Out</p>
+        <AiOutlineLogout className="lg:hidden" />
+      </button>
+    </div>
+  );
+
+  // Elements used when the screen size is sm
   const elementsSM = (
-    <div>
+    <div className="flex flex-col ">
       <div>{elements}</div>
+      <div>{button}</div>
     </div>
   );
 
   return (
     <div>
-      <div className="md:hidden">
-        {openMenu ? closeMenu : burguerMenu}
-        {openMenu ? elementsSM : ""}
-      </div>
+      {/* Menu used when the screen size is either md or lg */}
       <div className={styles.dashboard}>
+        {/* Menu used when the screen size is either sm */}
+        <div className={styles.dashboard_small_bar}>
+          {openMenu ? closeMenu : burguerMenu}
+          {openMenu ? elementsSM : ""}
+        </div>
+        {/* -------------------------------------------- */}
         <div className={styles.dashboard_img_container}>
           <div className={styles.dashboard_img}>
-            <img src="https://hub.fastbilling.app/uploads/-/system/appearance/logo/1/LOGO-SISTEMA-FACTURACION-2.png" />
+            <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
           </div>
         </div>
-        <div className={styles.dashboard_menu}> {elements}</div>
+        <div className={styles.dashboard_menu}>{elements}</div>
+        <div className="mt-auto hidden md:block ">{button}</div>
       </div>
     </div>
   );

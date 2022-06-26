@@ -1,0 +1,11 @@
+.bar {
+    @apply flex flex-row bg-white h-20 p-2  items-center fixed w-screen;
+}
+
+.topbar_searchbar {
+    @apply flex justify-start border-2 p-1 rounded-md px-3;
+}
+
+.topbar_icons{
+    @apply flex justify-end;
+}

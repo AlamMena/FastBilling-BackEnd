@@ -1,31 +1,46 @@
  /* Dashboard  */
 .dashboard {
-    @apply  h-screen  hidden md:block ;
+    @apply   lg:flex lg:flex-col h-screen  md:block bg-white p-4 relative;
  }
 
  .dashboard_menu {
-    @apply sm:block items-center mt-5 ;
+    @apply  md:flex md:flex-col items-center mt-5 hidden   ;
  }
 
+ .dashboard_small_bar {
+    @apply block md:hidden;
+ }
  /* Dashboard Elements  */
 
- .dashboard_elements{
-    @apply  flex flex-col gap-12  h-screen   ;
- }
-
  .dashboard_elements_p {
-    @apply hidden lg:block text-xs lg:text-sm font-semibold ;
+    @apply md:hidden lg:block block text-sm font-semibold ;
  }
 
  .dashboard__element {
-    @apply flex flex-row space-x-3  text-gray-400 lg:items-center lg:justify-start md:justify-center tracking-wider py-5 lg:ml-4 ;
+    @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4 ;
  }
+
+  /* Dashboard Icons */
+ .dashboard_button {
+    @apply  lg:bg-blue-500  lg:hover:bg-blue-700 text-gray-400 lg:hover:text-white hover:text-blue-500 lg:text-white font-bold lg:py-2 lg:px-4 rounded-full md:absolute md:bottom-3 absolute bottom-3 
+ }
+
+ .dashboard_icons {
+   @apply text-lg;
+ }
+
 
  /* Dasboard Image  */
  .dashboard_img {
-    @apply  w-16 md:w-32 lg:w-40 pt-4;
+    @apply  w-16 md:w-32 lg:w-40 pt-4 hidden md:block;
  }
  .dashboard_img_container{
     @apply flex justify-center 
  }
+
+ /* Hover CSS */
+ .dashboard__element:hover {
+    @apply text-blue-500
+ }
+
  
