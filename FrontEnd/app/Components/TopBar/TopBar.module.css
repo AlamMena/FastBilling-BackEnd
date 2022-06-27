@@ -1,11 +1,12 @@
 .bar {
-    @apply flex flex-row bg-white h-20 p-2  items-center fixed w-screen;
+    @apply flex flex-row bg-white h-20 p-2  items-center w-full justify-between ;
 }
 
 .topbar_searchbar {
-    @apply flex justify-start border-2 p-1 rounded-md px-3;
+    @apply flex border-2 p-1 rounded-md px-3 lg:w-72 md:w-56 w-36 bg-slate-200 ;
 }
 
 .topbar_icons{
-    @apply flex justify-end;
+    @apply flex  text-lg text-gray-400 gap-5 ;
 }
+

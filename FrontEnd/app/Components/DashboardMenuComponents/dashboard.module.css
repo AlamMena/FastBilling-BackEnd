@@ -8,7 +8,7 @@
  }
 
  .dashboard_small_bar {
-    @apply block md:hidden;
+    @apply block md:hidden py-4;
  }
  /* Dashboard Elements  */
 
