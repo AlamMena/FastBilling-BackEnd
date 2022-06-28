@@ -1,46 +1,47 @@
- /* Dashboard  */
+/* Dashboard  */
 .dashboard {
-    @apply   lg:flex lg:flex-col h-screen  md:block bg-white p-4 relative;
- }
+  @apply h-20 lg:flex lg:flex-col md:h-screen  md:block bg-white p-4 relative;
+}
 
- .dashboard_menu {
-    @apply  md:flex md:flex-col items-center mt-5 hidden   ;
- }
+.dashboard_menu {
+  @apply md:flex md:flex-col items-center mt-5 hidden;
+}
 
- .dashboard_small_bar {
-    @apply block md:hidden py-4;
- }
- /* Dashboard Elements  */
+.dashboard_small_bar {
+  @apply block md:hidden py-4;
+}
+/* Dashboard Elements  */
 
- .dashboard_elements_p {
-    @apply md:hidden lg:block block text-sm font-semibold ;
- }
+.dashboard_elements_p {
+  @apply md:hidden lg:block block text-sm font-semibold;
+}
 
- .dashboard__element {
-    @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4 ;
- }
+.dashboard__element {
+  @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4;
+}
 
-  /* Dashboard Icons */
- .dashboard_button {
-    @apply  lg:bg-blue-500  lg:hover:bg-blue-700 text-gray-400 lg:hover:text-white hover:text-blue-500 lg:text-white font-bold lg:py-2 lg:px-4 rounded-full md:absolute md:bottom-3 absolute bottom-3 
- }
+/* Dashboard Icons */
+.dashboard_button {
+  @apply lg:bg-blue-500  lg:hover:bg-blue-700 text-gray-400 lg:hover:text-white hover:text-blue-500 lg:text-white font-bold lg:py-2 lg:px-4 rounded-full hidden md:block;
+}
 
- .dashboard_icons {
-   @apply text-lg;
- }
+.dashboard_icons {
+  @apply text-lg;
+}
 
+/* Dasboard Image  */
+.dashboard_img {
+  @apply w-16 md:w-32 lg:w-32 pt-4 hidden md:block lg:flex lg:flex-row;
+}
+.dashboard_img_container {
+  @apply flex justify-center;
+}
 
- /* Dasboard Image  */
- .dashboard_img {
-    @apply  w-16 md:w-32 lg:w-40 pt-4 hidden md:block;
- }
- .dashboard_img_container{
-    @apply flex justify-center 
- }
+.dashboard_img_company_name {
+  @apply mt-5 hidden lg:block;
+}
 
- /* Hover CSS */
- .dashboard__element:hover {
-    @apply text-blue-500
- }
-
- 
+/* Hover CSS */
+.dashboard__element:hover {
+  @apply text-blue-500;
+}

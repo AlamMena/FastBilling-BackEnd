@@ -68,7 +68,7 @@ export default function Menu() {
 
   // Side Bar button
   const button = (
-    <div className="flex justify-center ">
+    <div className="flex justify-center">
       <button className={styles.dashboard_button}>
         <p className="hidden lg:block">Log Out</p>
         <AiOutlineLogout className="lg:hidden" />
@@ -78,7 +78,7 @@ export default function Menu() {
 
   // Elements used when the screen size is sm
   const elementsSM = (
-    <div className="flex flex-col ">
+    <div className="flex flex-row ">
       <div>{elements}</div>
       <div>{button}</div>
     </div>
@@ -98,9 +98,10 @@ export default function Menu() {
           <div className={styles.dashboard_img}>
             <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
           </div>
+          <div className={styles.dashboard_img_company_name}>Fast Billing</div>
         </div>
         <div className={styles.dashboard_menu}>{elements}</div>
-        <div className="mt-auto hidden md:block ">{button}</div>
+        <div className="mt-auto">{button}</div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import react from "react";
-import styles from "../TopBar/TopBar.module.css";
+import styles from "./TopBar.module.css";
 import { AiOutlineBell, AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 
 export default function TopBar() {
