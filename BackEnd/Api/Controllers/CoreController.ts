@@ -35,17 +35,16 @@ export class CoreController {
                 return res.status(400).send(error)
             }
 
-            const companies = await model.find().skip((page - 1) * limit).limit(limit);
+            const entities = await model.find().skip((page - 1) * limit).limit(limit);
 
-            if (companies.length === 0) {
+            if (entities.length === 0) {
                 return res.status(204).send([]);
             }
 
-            return res.status(200).send(companies);
+            return res.status(200).send(entities);
         }
         catch (error) {
-
-            console.log(error);
+            return res.status(500).send({message:'An error has ocurred'})
         }
     }
 
@@ -59,18 +58,15 @@ export class CoreController {
 
             // default data
             entity.IsDeleted = false;
-            entity.CreatedAt = new Date().getDate();
-            entity.CreatedBy = req.headers['authorization']?.split(' ')[1];
+            entity.CreatedAt = Date.now;
+            entity.CreatedBy = req.headers['authorization']?.split(' ')[1];// add user id
 
             await entity.save();
 
             return res.status(201).send();
 
         } catch (error) {
-
-            console.log(error);
             return res.status(400).send(error);
-
         }
 
     }
@@ -109,7 +105,7 @@ export class CoreController {
 
             const model = mongoose.model(this.CollectionName, this.ModelSchema);
 
-            const data = { IsDeleted: true, UpdatedBy: req.headers['authorization']?.split(' ')[1], UpdatedAt: new Date().getDate() }
+            const data = { IsDeleted: true, UpdatedBy: req.headers['authorization']?.split(' ')[1], UpdatedAt: Date.now }
 
             const response = await model.updateOne({ _id: id }, { $set: data });
 
@@ -123,7 +119,15 @@ export class CoreController {
     }
 
     async GetByIdAsync(req: Request, res: Response, next: NextFunction) {
-        return res.status(404);
-    }
 
+        const model = mongoose.model(this.CollectionName, this.ModelSchema);
+        const { id } = req.query;
+
+        const item = model.find({ id: id });
+
+        if (item === null) { 
+            res.status(404).send({message:'Resource not found'})
+        }
+        return res.status(200).send(item);
+    }
 }

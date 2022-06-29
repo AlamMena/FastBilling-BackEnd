@@ -35,14 +35,14 @@ class CoreController {
                     const error = new ValidationHandler_1.ErrorResponse('Invalid limit', 400);
                     return res.status(400).send(error);
                 }
-                const companies = yield model.find().skip((page - 1) * limit).limit(limit);
-                if (companies.length === 0) {
+                const entities = yield model.find().skip((page - 1) * limit).limit(limit);
+                if (entities.length === 0) {
                     return res.status(204).send([]);
                 }
-                return res.status(200).send(companies);
+                return res.status(200).send(entities);
             }
             catch (error) {
-                console.log(error);
+                return res.status(500).send({ message: 'An error has ocurred' });
             }
         });
     }
@@ -54,13 +54,12 @@ class CoreController {
                 const entity = new model(req.body);
                 // default data
                 entity.IsDeleted = false;
-                entity.CreatedAt = new Date().getDate();
-                entity.CreatedBy = (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+                entity.CreatedAt = Date.now;
+                entity.CreatedBy = (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1]; // add user id
                 yield entity.save();
                 return res.status(201).send();
             }
             catch (error) {
-                console.log(error);
                 return res.status(400).send(error);
             }
         });
@@ -91,7 +90,7 @@ class CoreController {
                     return res.status(404).send({ message: "Resource not found" });
                 }
                 const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
-                const data = { IsDeleted: true, UpdatedBy: (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1], UpdatedAt: new Date().getDate() };
+                const data = { IsDeleted: true, UpdatedBy: (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1], UpdatedAt: Date.now };
                 const response = yield model.updateOne({ _id: id }, { $set: data });
                 return res.status(200).send(response);
             }
@@ -102,7 +101,13 @@ class CoreController {
     }
     GetByIdAsync(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            return res.status(404);
+            const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
+            const { id } = req.query;
+            const item = model.find({ id: id });
+            if (item === null) {
+                res.status(404).send({ message: 'Resource not found' });
+            }
+            return res.status(200).send(item);
         });
     }
 }
