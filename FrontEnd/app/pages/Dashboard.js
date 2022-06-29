@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "../Components/DashboardMenuComponents/dashboard_menu";
 import TopBar from "../Components/TopBarComponents/TopBar";
-import DashboardPage from "../Components/DashboardPageComponents.js/dashboard_page";
+import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/dashboard_card";
 
 export default function Dashboard() {
   return (
@@ -11,8 +11,10 @@ export default function Dashboard() {
       </div>
       <div className=" w-screen ml-12 md:ml-20 lg:ml-44">
         <TopBar />
-        <div className="">
-          <DashboardPage />
+        <div className=" grid grid-cols-12">
+          <div className="ml-3 col-span-12 md:col-span-10 lg:col-span-7">
+            <DashboardCard />
+          </div>
         </div>
       </div>
     </div>

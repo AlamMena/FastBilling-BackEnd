@@ -1,0 +1,51 @@
+/* Card styling */
+
+.card {
+  @apply bg-white w-32 md:w-56 h-20 m-3 flex flex-row items-center justify-between p-4 rounded-2xl shadow-lg;
+}
+
+.card_elements {
+  @apply flex flex-row items-center;
+}
+
+.card_icon {
+  @apply p-3 bg-gray-200 text-blue-700 text-2xl rounded-2xl;
+}
+
+.card_arrow {
+  @apply text-xs text-blue-700;
+}
+
+.card_title_container {
+  @apply md:flex md:flex-col self-start ml-2 hidden;
+}
+
+.card_title {
+  @apply text-black font-bold;
+}
+
+.card_text {
+  @apply text-gray-400 text-xs;
+}
+
+/* Hover Card  */
+
+.card:hover {
+  @apply bg-blue-600;
+}
+
+.card:hover .card_icon {
+  @apply bg-white;
+}
+
+.card:hover .card_title {
+  @apply text-white;
+}
+
+.card:hover .card_text {
+  @apply text-white;
+}
+
+.card:hover .card_arrow {
+  @apply text-white;
+}
