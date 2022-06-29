@@ -14,24 +14,6 @@ import {
 export default function Menu() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  // Menu Icons which you can close and open the sidebar when the screen size is sm
-  const burguerMenu = (
-    <div>
-      <AiOutlineMenu
-        className=" text-gray-500"
-        onClick={() => setOpenMenu(true)}
-      />
-    </div>
-  );
-  const closeMenu = (
-    <div>
-      <AiOutlineClose
-        className="text-gray-500"
-        onClick={() => setOpenMenu(false)}
-      />
-    </div>
-  );
-
   // SideBar Data
   const SideBarData = [
     {
@@ -76,30 +58,10 @@ export default function Menu() {
     </div>
   );
 
-  // Elements used when the screen size is sm
-  const elementsSM = (
-    <div className="flex flex-row ">
-      <div>{elements}</div>
-      <div>{button}</div>
-    </div>
-  );
-
   return (
     <div>
       {/* Menu used when the screen size is either md or lg */}
       <div className={styles.dashboard}>
-        {/* Menu used when the screen size is either sm */}
-        <div className={styles.dashboard_small_bar}>
-          {openMenu ? closeMenu : burguerMenu}
-          {openMenu ? elementsSM : ""}
-        </div>
-        {/* -------------------------------------------- */}
-        <div className={styles.dashboard_img_container}>
-          <div className={styles.dashboard_img}>
-            <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
-          </div>
-          <div className={styles.dashboard_img_company_name}>Fast Billing</div>
-        </div>
         <div className={styles.dashboard_menu}>{elements}</div>
         <div className="mt-auto">{button}</div>
       </div>
