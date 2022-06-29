@@ -17,7 +17,18 @@
 .table_data .table__name{
     @apply rounded-full
 }
-
+.header{
+    @apply flex justify-between py-4 px-4
+}
+.header .header_title{
+    @apply text-lg font-semibold 
+}
+.header .header_button_create{
+    @apply text-sm font-semibold px-8 py-2 bg-black  text-white rounded-lg 
+}
+.header .header_button_group{
+    @apply text-sm font-semibold pr-8 pl-3 py-2 bg-gray-300  text-black rounded-lg
+}
 .product_list{
- @apply bg-white rounded-lg p-4 my-4 mx-auto max-w-4xl  overflow-auto
+ @apply bg-white rounded-lg p-4 my-4 mx-4 max-w-4xl  overflow-auto
 }
