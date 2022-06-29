@@ -5,9 +5,8 @@ import CompanyRoutes from "./Api/Routes/CompanyRoutes"
 import ProductRoutes from "./Api/Routes/ProductRoutes"
 import CategoryRoutes from "./Api/Routes/CategoryRoutes"
 import BrandRoutes from "./Api/Routes/BrandRoutes"
-
-
 import mongoose from "mongoose";
+import cors from 'cors'
 import bodyParser from 'body-parser';
 import { TIMEOUT } from "dns";
 
@@ -27,6 +26,7 @@ app.listen(PORT, () => {
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
+app.use(cors())
 
 // // app.all("*", AuthorizationHandler);
 

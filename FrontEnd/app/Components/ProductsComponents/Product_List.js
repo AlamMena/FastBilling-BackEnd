@@ -1,5 +1,9 @@
+import axios from "../../Axios/axios";
 import { AiOutlineArrowDown, AiOutlinePlus } from "react-icons/ai";
 import styles from "../ProductsComponents/Product_List.module.css";
+import { useEffect, useState } from "react";
+import useAxios from "../../Axios/axios";
+import auth from "../../Firebase/FirebaseAppConfig";
 
 const headers = [
   "No",
@@ -14,7 +18,7 @@ const headers = [
 
 const Products = [
   {
-    Id: 1,
+    _id: 1,
     ImageUrl: "",
     Name: "T-SHIRT BLACK LIVES MATTERS",
     Price: 29.92,
@@ -24,7 +28,7 @@ const Products = [
     Earnings: 2000,
   },
   {
-    Id: 2,
+    _id: 2,
     ImageUrl: "",
     Name: "T-SHIRT BLACK LIVES MATTERS",
     Price: 29.92,
@@ -36,11 +40,9 @@ const Products = [
 ];
 
 
-const getProductsAsync = async () => { 
-  //
-}
 
-const TableHeader = () => { 
+const TableHeader = () => {
+
 
   return (
     <div className={styles.header}>
@@ -62,12 +64,28 @@ const TableHeader = () => {
 }
 
 const Table = () => {
+
+  const [products, setProducts] = useState([]);
+  const { axiosInstance } = useAxios();
+
+  const getProductsAsync = async () => {
+
+    try {
+      const { data } = await axiosInstance.get('api/v1/companies?page=1&limit=2');
+      setProducts(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    getProductsAsync();
+  }, [])
   return (
     <>
       <TableHeader />
       <table className={styles.table}>
         <thead>
-          <tr>
+          <tr onClick={getProductsAsync}>
             {headers.map((header) => {
               return <th className={styles.table_header}>{header}</th>;
             })}

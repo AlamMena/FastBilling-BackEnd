@@ -4,52 +4,36 @@ import Login from "../pages/Login";
 import Loading from "../Components/Loading";
 import Index from "../pages/index";
 import axios from "axios";
+import useAuth from "./useAuth";
+import auth from "../Firebase/FirebaseAppConfig";
 
 export default function PrivateRoute({ children }) {
   const [isLoading, setLoading] = useState(true);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
 
   // router
   const { pathname } = useRouter();
 
   useEffect(() => {
-    const parsedToken = JSON.parse(localStorage.getItem("token"));
-    setToken(parsedToken);
-    setLoading(false);
+    auth.onAuthStateChanged(function (user) {
+      setUser(user);
+      setLoading(false);
+      const x = axios.create({
+        baseURL: 'http://localhost:8080/',
+        headers: {
+          'Authorization': `Bearer ${user.accessToken}`
+        }
+      })
+    })
   }, []);
 
-  const refreshToken = async () => {
-    const refreshTokenBody = {
-      grantType: "refresh_token",
-      refreshToken: token.refreshToken,
-    };
-    const refreshTokenResponse = await axios.post(
-      "https://securetoken.googleapis.com/v1/token?key=AIzaSyDwFKPD4xvIbD1huSnbQG44GTXP2h5_kYM",
-      refreshTokenBody
-    );
-    console.log(refreshTokenResponse);
-    const { access_token, refresh_token, expires_in } =
-      refreshTokenResponse.data;
-
-    localStorage.setItem(
-      "token",
-      JSON.stringify({
-        accessToken: access_token,
-        refreshToken: refresh_token,
-        expirationTime: expires_in,
-      })
-    );
-  };
-
-  if (token) {
-    if (token.expirationTime > Math.floor(Date.now() / 1000)) {
-      refreshToken();
-    }
+  if (user) {
     if (pathname === "/Login") {
       return <Index />;
     }
     return children;
-  } else if (!isLoading && !token) {
+  }
+  else if (!isLoading && !user) {
     return <Login />;
   }
   return <Loading />;
