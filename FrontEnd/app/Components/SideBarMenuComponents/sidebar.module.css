@@ -1,6 +1,6 @@
 /* Dashboard  */
 .dashboard {
-  @apply h-20 lg:flex lg:flex-col md:h-screen  md:block bg-white p-4 relative;
+		@apply relative h-20 lg:flex lg:flex-col md:h-screen md:block bg-white p-4;
 }
 
 .dashboard_menu {
