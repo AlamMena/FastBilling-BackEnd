@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import styles from "../DashboardMenuComponents/dashboard.module.css";
+import styles from "./sidebar.module.css";
 import {
   AiOutlineMenu,
   AiOutlineClose,
