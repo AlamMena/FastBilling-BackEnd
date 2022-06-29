@@ -1,12 +1,36 @@
 .bar {
-    @apply flex flex-row bg-white h-20 p-2  items-center w-full justify-between ;
+  @apply flex bg-white h-16 md:h-20 p-2 items-center w-screen;
 }
 
 .topbar_searchbar {
-    @apply flex border-2 p-1 rounded-md px-3 lg:w-72 md:w-56 w-36 bg-slate-200 ;
+  @apply md:flex border-2 p-1 rounded-md px-3 lg:w-72 md:w-64 hidden bg-slate-200 mr-24;
 }
 
-.topbar_icons{
-    @apply flex  text-lg text-gray-400 gap-5 ;
+.topbar_icons {
+  @apply flex  text-lg text-gray-400 gap-5 mr-3;
 }
 
+/* Side Bar styling */
+
+.dashboard_elements_p {
+  @apply md:hidden lg:block block text-sm font-semibold;
+}
+
+.dashboard__element {
+  @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4;
+}
+.small_bar {
+  @apply block md:hidden h-full mt-7 items-center;
+}
+
+/* Dasboard Image  */
+.img {
+  @apply hidden md:block lg:flex lg:flex-row;
+}
+.img_container {
+  @apply flex justify-center lg:w-32 w-16 lg:mt-6 mt-0 items-center;
+}
+
+.img_company_name {
+  @apply hidden lg:block w-12;
+}

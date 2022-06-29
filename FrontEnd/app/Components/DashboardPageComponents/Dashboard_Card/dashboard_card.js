@@ -39,5 +39,5 @@ export default function () {
     );
   });
 
-  return <div className="flex flex-wrap">{card}</div>;
+  return <div className=" overflow-auto flex lg:flex-wrap">{card}</div>;
 }
