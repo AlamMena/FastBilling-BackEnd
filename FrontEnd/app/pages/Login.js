@@ -4,27 +4,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { app, firebaseConfig } from "../Firebase/FirebaseAppConfig";
 import { async } from "@firebase/util";
+import useAuth from "../Auth/useAuth";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState("");
-  const auth = getAuth(app);
 
-  let updateToken = async () => {
-    let response = await fetch();
-  };
-
+  const { Login } = useAuth();
   const handleLogin = async (data) => {
-    try {
-      console.log(data);
-      const { email, password } = data;
-      const response = await signInWithEmailAndPassword(auth, email, password);
-      const tokenExpirationTime = response.user.stsTokenManager.expirationTime;
-      console.log(tokenExpirationTime);
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.Message;
-    }
+    const response = await Login(data);
   };
 
   return (

@@ -1,12 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 import CoreEntity from "../Core/CoreModel";
 
-const CompanySchema = new Schema({
+const ProductSchema = new Schema({
     Name: { type: String, required: true },
-    Identification: { type: String, required: true },
-    Address: { type: String, required: true },
-    PhoneNumber: { type: String, required: true },
-    
+    Description: { type: String },
+    ImageUrl: { type: String },
+    Price: { type: Number },
+    Cost: { type: Number },
+
     IsDeleted: { type: Boolean },
 
     CreatedAt: { type: Date },
@@ -18,5 +19,4 @@ const CompanySchema = new Schema({
 
 });
 
-
-export default CompanySchema;
+export default ProductSchema;
