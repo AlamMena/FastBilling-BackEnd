@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar from "../Components/SideBarMenuComponents/sidebar_menu";
 import TopBar from "../Components/TopBarComponents/TopBar";
-import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/dashboard_card";
+import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/Dashboard_card";
 
 export default function Dashboard() {
   return (
