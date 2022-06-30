@@ -1,8 +1,13 @@
 import SideBar from "../Components/SideBarMenuComponents/sidebar_menu";
+<<<<<<< HEAD
 import TopBar from "../Components/TopBarComponents/Top_Bar";
 import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/dashboard_card";
 import React, { useContext } from "react";
 import AuthContext from "../Auth/AuthContext";
+=======
+import TopBar from "../Components/TopBarComponents/TopBar";
+import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/Dashboard_card";
+>>>>>>> Alex
 
 export default function Dashboard() {
   return (

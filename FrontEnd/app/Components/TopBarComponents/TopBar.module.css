@@ -12,17 +12,6 @@
 
 /* Side Bar styling */
 
-.dashboard_elements_p {
-  @apply md:hidden lg:block block text-sm font-semibold;
-}
-
-.dashboard__element {
-  @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4;
-}
-.small_bar {
-  @apply block md:hidden h-full mt-7 items-center;
-}
-
 /* Dasboard Image  */
 .img {
   @apply hidden md:block lg:flex lg:flex-row;
