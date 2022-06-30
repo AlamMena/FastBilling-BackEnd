@@ -1,5 +1,7 @@
 /* Dashboard  */
 .dashboard {
+  @apply relative h-20 lg:flex lg:flex-col md:h-screen md:block bg-white p-4;
+
   @apply h-20 lg:flex lg:flex-col md:h-screen hidden md:block bg-white p-4  md:w-20 lg:w-44 fixed;
 }
 
