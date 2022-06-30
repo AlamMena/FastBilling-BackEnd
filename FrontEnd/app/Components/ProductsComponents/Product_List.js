@@ -39,11 +39,7 @@ const Products = [
   },
 ];
 
-
-
 const TableHeader = () => {
-
-
   return (
     <div className={styles.header}>
       <h1 className={styles.header_title}>Products</h1>
@@ -61,25 +57,26 @@ const TableHeader = () => {
       </div>
     </div>
   );
-}
+};
 
 const Table = () => {
-
   const [products, setProducts] = useState([]);
   const { axiosInstance } = useAxios();
 
   const getProductsAsync = async () => {
-
     try {
-      const { data } = await axiosInstance.get('api/v1/companies?page=1&limit=2');
-      setProducts(data)
+      const { data } = await axiosInstance.get(
+        "api/v1/companies?page=1&limit=2"
+      );
+      setProducts(data);
+      console.log(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   useEffect(() => {
     getProductsAsync();
-  }, [])
+  }, []);
   return (
     <>
       <TableHeader />
