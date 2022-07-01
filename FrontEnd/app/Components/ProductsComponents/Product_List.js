@@ -4,6 +4,7 @@ import styles from "../ProductsComponents/Product_List.module.css";
 import { useEffect, useState } from "react";
 import useAxios from "../../Axios/axios";
 import auth from "../../Firebase/FirebaseAppConfig";
+import ProductPopUp from "./ProductPopUp";
 
 const headers = [
   "No",
@@ -69,20 +70,27 @@ const Table = () => {
         "api/v1/companies?page=1&limit=2"
       );
       setProducts(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
+  const handle=() => {
+    console.log('alam')
+  }
   useEffect(() => {
     getProductsAsync();
   }, []);
   return (
     <>
+    {/* <div className={!popUpOpen ? 'hidden':'block'}>
+        <ProductPopUp setOpen={setPoUpOpen} />
+      </div> */}
+
+      {/* <button onClick={handle}>Alam</button> */}
       <TableHeader />
       <table className={styles.table}>
         <thead>
-          <tr onClick={getProductsAsync}>
+          <tr>
             {headers.map((header) => {
               return <th className={styles.table_header}>{header}</th>;
             })}

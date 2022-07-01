@@ -1,4 +1,3 @@
-import react from "react";
 import styles from "./TopBar.module.css";
 import {
   AiOutlineBell,
@@ -10,9 +9,7 @@ import {
   AiOutlineFundView,
   AiOutlinePieChart,
   AiOutlineHome,
-  AiOutlineLogout,
 } from "react-icons/ai";
-import { useState } from "react";
 import SideMenuPopUp from "./Sidemenu_popup";
 
 export default function TopBar() {

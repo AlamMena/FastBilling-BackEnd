@@ -12,9 +12,11 @@ export default function useAuth() {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
-      setUser(user);
-    })
-  })
+      if (user) {
+        setUser(user);
+      }
+    });
+  });
 
   const Login = async (data) => {
     try {
@@ -28,13 +30,11 @@ export default function useAuth() {
         if (user) {
           setUser(user);
         }
-      })
-
+      });
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const LogOut = () => {
     console.log("hello");
