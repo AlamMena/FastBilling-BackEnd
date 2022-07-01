@@ -5,12 +5,6 @@ import {
   AiOutlineUser,
   AiOutlineSearch,
   AiOutlineMenu,
-  AiOutlineClose,
-  AiFillSetting,
-  AiOutlineFundView,
-  AiOutlinePieChart,
-  AiOutlineHome,
-  AiOutlineLogout,
 } from "react-icons/ai";
 import { useState } from "react";
 import SideMenuPopUp from "./Sidemenu_popup";

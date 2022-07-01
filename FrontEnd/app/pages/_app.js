@@ -2,10 +2,10 @@ import "../styles/globals.css";
 import React from "react";
 import SideBar from "../Components/SideBarMenuComponents/sidebar_menu";
 import TopBar from "../Components/TopBarComponents/Top_Bar";
-import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/dashboard_card";
 import useAuth from "../Auth/useAuth";
 import AuthContext from "../Auth/AuthContext";
 import PrivateRoute from "../Auth/PrivateRoute";
+import Dashboard from "./Dashboard";
 
 function MyApp({ Component, pageProps }) {
   const { user } = useAuth();
@@ -23,12 +23,9 @@ function MyApp({ Component, pageProps }) {
             <div className="fixed">
               <TopBar />
             </div>
-            <div className=" md:ml-20 lg:ml-44 grid grid-cols-12 mt-20">
-              {/* Content grid */}
-              <div className="ml-3 col-span-12 md:col-span-10 lg:col-span-7">
-                <DashboardCard />
-                {/* <Component {...pageProps} /> */}
-              </div>
+            {/* Content grid */}
+            <div className=" md:ml-20 lg:ml-48 mt-24">
+              <Dashboard />
             </div>
           </div>
         </div>
