@@ -8,7 +8,8 @@ import {
   AiOutlineLogout,
 } from "react-icons/ai";
 
-export default function SideMenuPopUp() {
+export default function SideMenuPopUp({ setOpenMenu }) {
+  // Side Bar Data
   const SideBarData = [
     {
       title: "Dashboard",
@@ -52,7 +53,7 @@ export default function SideMenuPopUp() {
   );
 
   return (
-    <div className="flex flex-row absolute h-screen w-screen top-0 bottom-0 left-0">
+    <div className="flex flex-row absolute h-screen w-screen top-0 bottom-0 left-0 md:hidden">
       <div className={styles.menu}>
         <div className={styles.img}>
           <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
@@ -60,7 +61,10 @@ export default function SideMenuPopUp() {
         <div>{elements}</div>
         <div className="mt-auto mb-3">{button}</div>
       </div>
-      <div className=" bg-opacity-40 bg-black w-2/4 backdrop-blur-sm"></div>
+      <div
+        className=" bg-opacity-40 bg-black w-2/4 backdrop-blur-sm"
+        onClick={() => setOpenMenu(false)}
+      ></div>
     </div>
   );
 }

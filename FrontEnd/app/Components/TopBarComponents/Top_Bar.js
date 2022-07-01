@@ -1,3 +1,4 @@
+import react from "react";
 import styles from "./TopBar.module.css";
 import {
   AiOutlineBell,
@@ -9,74 +10,25 @@ import {
   AiOutlineFundView,
   AiOutlinePieChart,
   AiOutlineHome,
+  AiOutlineLogout,
 } from "react-icons/ai";
+import { useState } from "react";
 import SideMenuPopUp from "./Sidemenu_popup";
 
 export default function TopBar() {
-  const setOpenMenu = () => {
-    <SideMenuPopUp />;
-  };
+  const [openMenu, setOpenMenu] = useState(false);
+
   // Menu Icons which you can close and open the sidebar when the screen size is sm
   const burguerMenu = (
     <div className=" block md:hidden  text-gray-500 ml-2">
-      <AiOutlineMenu onClick={() => setOpenMenu()} />
+      <AiOutlineMenu onClick={() => setOpenMenu(true)} />
     </div>
   );
-  const closeMenu = (
-    <div>
-      <AiOutlineClose
-        className="text-gray-500"
-        onClick={() => setOpenMenu(false)}
-      />
-    </div>
-  );
-
-  // SideBar Data
-  const SideBarData = [
-    {
-      title: "Dashboard",
-      path: "/",
-      icon: <AiOutlineHome />,
-    },
-    {
-      title: "Estadisticas",
-      path: "/",
-      icon: <AiOutlinePieChart />,
-    },
-    {
-      title: "Vision general",
-      path: "/",
-      icon: <AiOutlineFundView />,
-    },
-    {
-      title: "Ajustes",
-      path: "/",
-      icon: <AiFillSetting />,
-    },
-  ];
-
-  // // Side Bar button
-  // const button = (
-  //   <div className="flex justify-center">
-  //     <button className={styles.dashboard_button}>
-  //       <p className="hidden lg:block">Log Out</p>
-  //       <AiOutlineLogout className="lg:hidden" />
-  //     </button>
-  //   </div>
-  // );
-
-  // // Elements used when the screen size is sm
-  // const elementsSM = (
-  //   <div className="flex flex-row ">
-  //     <div>{elements}</div>
-  //     <div>{button}</div>
-  //   </div>
-  // );
 
   return (
     <div className={styles.bar}>
       {burguerMenu}
-      <SideMenuPopUp />
+      {openMenu ? <SideMenuPopUp setOpenMenu={setOpenMenu} /> : null}
       <div className={styles.img_container}>
         <div className={styles.img}>
           <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
