@@ -36,10 +36,11 @@ export default function useAuth() {
     }
   };
 
-  const LogOut = () => {
+  const LogOut = async () => {
+    await auth.signOut();
     console.log("hello");
-    localStorage.removeItem("token");
     router.reload("/Login");
   };
-  return { Login, LogOut, user, setUser };
+
+  return { Login, LogOut, user };
 }

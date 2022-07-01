@@ -33,7 +33,10 @@ export default function TopBar() {
         <div className={styles.img}>
           <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
         </div>
-        <div className={styles.img_company_name}>Fast Billing</div>
+        <div className={styles.img_company_name}>
+          <p className=" font-bold text-blue-500 tracking-wider">Fast</p>{" "}
+          <p className="text-xs text-gray-500 tracking-widest">Billing</p>
+        </div>
       </div>
       <div className="flex ml-auto items-center">
         <div className={styles.topbar_searchbar}>

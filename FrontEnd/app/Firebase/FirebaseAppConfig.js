@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "fast-billing-775f5.appspot.com",
   messagingSenderId: "181974334394",
   appId: "1:181974334394:web:9c2f7ac6ecad03931d3b83",
-  measurementId: "G-Y8DN64C29K"
+  measurementId: "G-Y8DN64C29K",
 };
 
 // Initialize Firebase

@@ -58,11 +58,11 @@ export default function SideMenuPopUp({ setOpenMenu }) {
         <div className={styles.img}>
           <img src="https://1000logos.net/wp-content/uploads/2016/11/meta-logo.png" />
         </div>
-        <div>{elements}</div>
-        <div className="mt-auto mb-3">{button}</div>
+        <div className="mt-10">{elements}</div>
+        <div className="mt-auto mb-3 text-gray-500">{button}</div>
       </div>
       <div
-        className=" bg-opacity-40 bg-black w-2/4 backdrop-blur-sm"
+        className=" bg-opacity-40 bg-black w-1/2 backdrop-blur-sm"
         onClick={() => setOpenMenu(false)}
       ></div>
     </div>
