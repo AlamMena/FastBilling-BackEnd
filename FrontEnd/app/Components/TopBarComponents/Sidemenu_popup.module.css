@@ -1,5 +1,5 @@
 .menu {
-  @apply w-2/4 md:hidden bg-white shadow-xl flex flex-col items-center;
+  @apply w-3/5 md:hidden bg-white shadow-xl flex flex-col items-center;
 }
 
 .dashboard_elements_p {
@@ -18,5 +18,5 @@
 }
 
 .img {
-  @apply lg:flex lg:flex-row;
+  @apply w-32 mt-5 lg:flex lg:flex-row;
 }
