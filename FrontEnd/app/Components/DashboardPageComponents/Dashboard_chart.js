@@ -66,7 +66,7 @@ export default function Chart() {
           <AiOutlineEllipsis />{" "}
         </div>
       </div>
-      <div className="font-bold text-2xl mb-4">13,546$</div>
+      <div className="font-bold text-2xl mb-4">$13,546</div>
       <ResponsiveContainer width="95%" height="70%">
         <BarChart
           width={500}

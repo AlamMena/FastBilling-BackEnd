@@ -38,9 +38,5 @@ export default function () {
     );
   });
 
-  return (
-    <div className="flex overflow-auto md:flex-wrap md:justify-center">
-      {card}
-    </div>
-  );
+  return <div className="md:flex overflow-auto md:flex-wrap flex">{card}</div>;
 }
