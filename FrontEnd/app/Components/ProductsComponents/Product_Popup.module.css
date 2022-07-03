@@ -1,0 +1,18 @@
+.form{
+    @apply bg-white max-w-lg rounded-lg min-w-min p-4 font-semibold text-sm
+}
+.form_row{
+@apply flex py-2
+}
+.container__input{
+    @apply flex flex-col w-full mx-2 space-y-1
+}
+.form__input{
+    @apply w-full outline rounded-lg px-2 py-1 outline-1 outline-neutral-400
+}
+.label{
+    @apply flex flex-auto items-center text-neutral-600
+}
+.label_icon{
+    @apply text-sm ml-2
+}

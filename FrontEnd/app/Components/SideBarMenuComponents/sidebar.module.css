@@ -1,7 +1,7 @@
 /* Dashboard  */
 .dashboard {
 
-  @apply h-20 md:flex md:flex-col md:h-screen hidden bg-white p-4  md:w-20 lg:w-44 fixed;
+  @apply h-20 md:flex md:flex-col md:h-screen hidden bg-white p-4  md:w-20 lg:w-56 fixed;
 }
 
 .dashboard_menu {
@@ -11,7 +11,7 @@
 /* Dashboard Elements  */
 
 .dashboard_elements_p {
-  @apply md:hidden lg:block block text-sm font-semibold;
+  @apply md:hidden lg:block block text-lg font-semibold;
 }
 
 .dashboard__element {
@@ -23,10 +23,10 @@
 }
 
 .dashboard_icons {
-  @apply text-lg;
+  @apply text-2xl;
 }
 
 /* Hover CSS */
 .dashboard__element:hover {
-  @apply text-blue-500;
+  @apply text-blue-500 cursor-pointer;
 }

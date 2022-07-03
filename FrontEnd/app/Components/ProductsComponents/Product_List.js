@@ -4,7 +4,7 @@ import styles from "../ProductsComponents/Product_List.module.css";
 import { useEffect, useState } from "react";
 import useAxios from "../../Axios/axios";
 import auth from "../../Firebase/FirebaseAppConfig";
-import ProductPopUp from "./ProductPopUp";
+import ProductPopUp from "./Product_PopUp";
 
 const headers = [
   "No",
