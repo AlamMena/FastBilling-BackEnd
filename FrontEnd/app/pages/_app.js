@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
             </div>
             {/* Content grid */}
             <div className=" md:ml-20 lg:ml-44 mt-16 md:mt-18">
-              <Dashboard />
               {/* <Component {...pageProps} /> */}
               {/* <Products /> */}
               {/* <Table /> */}
