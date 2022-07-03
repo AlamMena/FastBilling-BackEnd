@@ -6,6 +6,8 @@ import useAuth from "../Auth/useAuth";
 import AuthContext from "../Auth/AuthContext";
 import PrivateRoute from "../Auth/PrivateRoute";
 import Dashboard from "./Dashboard";
+import Products from "./Products";
+import Table from "../Globals/Tables/table";
 
 function MyApp({ Component, pageProps }) {
   const { user } = useAuth();
@@ -26,6 +28,9 @@ function MyApp({ Component, pageProps }) {
             {/* Content grid */}
             <div className=" md:ml-20 lg:ml-44 mt-16 md:mt-18">
               <Dashboard />
+              {/* <Component {...pageProps} /> */}
+              {/* <Products /> */}
+              {/* <Table /> */}
             </div>
           </div>
         </div>
