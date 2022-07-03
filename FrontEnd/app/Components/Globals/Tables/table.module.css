@@ -1,0 +1,18 @@
+.table {
+   @apply mt-3 w-full bg-white rounded-lg}
+
+.table_head {
+    @apply text-sm uppercase border-b-8 border-blue-700;
+}
+
+.table_head_th {
+    @apply p-3  ;
+}
+
+.table_body_tr {
+    @apply border-b odd:bg-gray-100;
+}
+
+.table_body_td {
+    @apply p-3 ;
+}

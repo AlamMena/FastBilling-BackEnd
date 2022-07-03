@@ -1,55 +1,119 @@
-import React, { useMemo } from "react";
-import { useTable, Table, TableHead, TableRow, TableHeader } from "react-table";
+import { useTable } from "react-table";
+import { useMemo } from "react";
+import styles from "../Tables/table.module.css";
+import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 
-export default function ReactTable() {
+const DefaultTable = ({ columns, data }) => {
+  const tableInstance = useTable({ columns, data });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
+  return (
+    <table {...getTableProps()} className={styles.table}>
+      <thead className={styles.table_head}>
+        {headerGroups.map((headerGroup) => (
+          <tr {...headerGroup.getHeaderGroupProps()} className="p">
+            {headerGroup.headers.map((column) => (
+              <th {...column.getHeaderProps()} className={styles.table_head_th}>
+                {column.render("Header")}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, i) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()} className={styles.table_body_tr}>
+              {row.cells.map((cell) => {
+                return (
+                  <td {...cell.getCellProps()} className={styles.table_body_td}>
+                    {cell.render("Cell")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+};
+
+export default function Products() {
   const data = useMemo(() => [
-    { id: 1, name: "Alexito", description: "Alexito es el mejor" },
+    {
+      No: 1,
+      quantity: 12,
+      productName: "Martillo",
+      status: "21",
+      editar: <AiOutlineDelete />,
+    },
+    {
+      No: 2,
+      productName: "Shampoo",
+      quantity: 800,
+      status: "Activo",
+      editar: <AiOutlineDelete />,
+    },
+    {
+      No: 2,
+      productName: "Shampoo",
+      quantity: 800,
+      status: "Activo",
+      editar: <AiOutlineDelete />,
+    },
+    {
+      No: 2,
+      productName: "Shampoo",
+      quantity: 800,
+      status: "Activo",
+      editar: <AiOutlineDelete />,
+    },
+    {
+      No: 2,
+      productName: "Shampoo",
+      quantity: 800,
+      status: "Activo",
+      editar: <AiOutlineDelete />,
+    },
   ]);
 
   const columns = useMemo(() => [
     {
-      Header: "ID",
-      accessor: "id",
+      Header: "No",
+      accessor: "No",
     },
     {
-      Header: "Nombre",
-      accessor: "nombre",
+      Header: "Nombre del producto",
+      accessor: "productName",
     },
-
     {
-      Header: "Precio",
-      accessor: "precio",
+      Header: "Cantidad",
+      accessor: "quantity",
+    },
+    {
+      Header: "Status",
+      accessor: "status",
+    },
+    {
+      Header: "Editar",
+      accessor: "editar",
     },
   ]);
 
-  const tableInstance = useTable({ columns, data });
-
-  const { getTableProps, getTableBodyProps, headerGroups, row, prepareRow } =
-    tableInstance;
-
   return (
-    <Table {...getTableProps()}>
-      <TableHead>
-        {headerGroups.map((headerGroups) => (
-          <TableRow {...headerGroups.getHeaderGroupProps()}>
-            {headerGroups.map((columns) => (
-              <TableHeader {...columns.getHeaderProps()}>
-                {columns.render("Header")}
-              </TableHeader>
-            ))}
-          </TableRow>
-        ))}
-      </TableHead>
-      <TableBody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return row.cells.map((cell, index) => (
-            <TableData {...cell.getCellProps()}>
-              {cell.render("Cell")}
-            </TableData>
-          ));
-        })}
-      </TableBody>
-    </Table>
+    <div className="bg-white p-3 rounded-xl ">
+      <div className="flex justify-between items-center">
+        <div className="text-lg font-semibold tracking-wide">Tabla</div>
+        <div className="text-lg">
+          <AiOutlinePlus />
+        </div>
+      </div>
+      <div className=" overflow-auto">
+        <DefaultTable columns={columns} data={data} />
+      </div>
+    </div>
   );
 }
