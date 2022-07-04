@@ -7,6 +7,7 @@ const ProductSchema = new Schema({
     ImageUrl: { type: String },
     Price: { type: Number },
     Cost: { type: Number },
+    Benefit: { type: Number },
 
     IsDeleted: { type: Boolean },
 
