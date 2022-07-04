@@ -106,7 +106,7 @@ export default function Products() {
   const title = "Tabla";
 
   return (
-    <div className="bg-white p-3 rounded-xl ">
+    <div className="bg-white mx-3 p-3 rounded-xl ">
       <div className="flex justify-between items-center">
         <div className="text-lg font-semibold tracking-wide">{title}</div>
         <div className="text-lg">

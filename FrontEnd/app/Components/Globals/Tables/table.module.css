@@ -1,12 +1,13 @@
 .table {
-   @apply mt-3 w-full bg-white rounded-lg}
+   @apply mt-3 w-full bg-white rounded-lg
+}
 
 .table_head {
     @apply text-sm uppercase border-b-8 border-blue-700;
 }
 
 .table_head_th {
-    @apply p-3   ;
+    @apply p-3 text-left  ;
 }
 
 .table_body_tr {

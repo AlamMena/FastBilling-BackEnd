@@ -7,7 +7,7 @@ import AuthContext from "../Auth/AuthContext";
 import PrivateRoute from "../Auth/PrivateRoute";
 import Dashboard from "./Dashboard";
 import Products from "./Products";
-import Table from "../Components/Globals/Tables/table";
+import Table from "../Components/Globals/Tables/Table";
 
 function MyApp({ Component, pageProps }) {
   const { user } = useAuth();
@@ -29,11 +29,15 @@ function MyApp({ Component, pageProps }) {
               {/* Content grid */}
               <div className="col-span-12">
                 <Dashboard />
-
                 {/* <Component {...pageProps} /> */}
-              </div>
-              <div className="m-3 col-span-12">
-                <Table />
+                {/* lg:col-span 7 when you are done with the table */}
+                <div className="ml-3 col-span-12 md:col-span-10 lg:col-span-12">
+                  {/* <DashboardCard /> */}
+                  <Component {...pageProps} />
+                </div>
+                <div className="m-3 col-span-12">
+                  <Table />
+                </div>
               </div>
             </div>
           </div>
