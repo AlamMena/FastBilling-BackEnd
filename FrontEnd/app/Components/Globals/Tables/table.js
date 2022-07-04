@@ -3,22 +3,23 @@ import { useMemo, useState } from "react";
 import styles from "../Tables/table.module.css";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 
-export default function Products({ columns, data, setObject, deleteObject, updateTable}) {
+export default function Products({ columns, data, setObject, deleteObject, setPopUpIsOpen }) {
   const tableInstance = useTable({ columns, data });
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
   const handleSelect = (e) => {
     setObject(e.original);
+    setPopUpIsOpen(true);
   };
   const title = "Tabla";
 
   return (
     <div className="bg-white mx-3 p-3 rounded-xl ">
-      <div className="flex justify-between items-center">
+      <div className=" flex justify-between items-center px-3">
         <div className="text-lg font-semibold tracking-wide">{title}</div>
         <div className="text-lg">
-          <AiOutlinePlus />
+          <AiOutlinePlus className="cursor-pointer" onClick={setPopUpIsOpen} />
         </div>
       </div>
       <div className=" overflow-auto">

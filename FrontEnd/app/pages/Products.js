@@ -3,10 +3,14 @@ import { useEffect, useMemo, useState } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
 import Table from "../Components/Globals/Tables/Table";
 import useAxios from "../Axios/axios";
+import Alert from "../Components/AlertsComponents/Alert";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+
+  const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
+  const [alertOpen, setAlertOpen] = useState(false);
   const { axiosInstance } = useAxios();
 
   const getProductsAsync = async () => {
@@ -52,6 +56,13 @@ export default function Products() {
     },
   ]);
 
+  const handleOpenPupOp = () => {
+    if (popUpIsOpen) {
+      setPopUpIsOpen(false);
+    } else {
+      setPopUpIsOpen(true)
+    }
+  }
   return (
     <>
       <Table
@@ -59,8 +70,17 @@ export default function Products() {
         data={products}
         setObject={setSelectedItem}
         deleteObject={deleteObjectAsync}
+        setPopUpIsOpen={handleOpenPupOp}
       />
-      <ProductPopUp getProducts={getProductsAsync} defaultData={selectedItem} />
+      <div className={`${popUpIsOpen && 'hidden'} flex`}>
+        <ProductPopUp
+          getProducts={getProductsAsync}
+          defaultData={selectedItem}
+          setPopUpIsOpen={handleOpenPupOp}
+          setAlertOpen={setAlertOpen} />
+      </div>
+      {alertOpen && <Alert />}
+
     </>
   );
 }

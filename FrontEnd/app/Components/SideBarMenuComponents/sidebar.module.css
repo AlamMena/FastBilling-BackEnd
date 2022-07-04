@@ -11,22 +11,25 @@
 /* Dashboard Elements  */
 
 .dashboard_elements_p {
-  @apply md:hidden lg:block block text-lg font-semibold;
+  @apply md:hidden text-sm lg:block block font-semibold;
 }
 
 .dashboard__element {
-  @apply flex flex-row space-x-3 lg:self-start justify-start text-gray-400 items-center  tracking-wide py-5 lg:ml-4;
+  @apply flex flex-row space-x-3 lg:self-start justify-start text-neutral-400 items-center  tracking-wide py-5 lg:ml-4;
 }
 /* Dashboard Icons */
 .dashboard_button {
-  @apply lg:bg-blue-500  lg:hover:bg-blue-700 text-gray-400 lg:hover:text-white hover:text-blue-500 lg:text-white font-bold lg:py-2 lg:px-4 rounded-full hidden md:block;
+  @apply lg:bg-blue-500  lg:hover:bg-blue-700 text-neutral-400 lg:hover:text-white hover:text-blue-500 lg:text-white font-bold lg:py-2 lg:px-4 rounded-full hidden md:block;
 }
 
 .dashboard_icons {
-  @apply text-2xl;
+  @apply text-xl;
 }
 
 /* Hover CSS */
 .dashboard__element:hover {
+  @apply text-blue-500 cursor-pointer;
+}
+.dashboard__element_active{
   @apply text-blue-500 cursor-pointer;
 }
