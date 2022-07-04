@@ -16,3 +16,9 @@
 .label_icon{
     @apply text-sm ml-2
 }
+.label_error {
+    @apply text-red-500 px-2 text-sm
+}
+.input_error{
+    @apply outline outline-1 outline-red-400
+}
