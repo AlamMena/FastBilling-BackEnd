@@ -1,14 +1,9 @@
 import ProductList from "../Components/ProductsComponents/Product_List";
-<<<<<<< HEAD
-import React, { useMemo } from "react";
-import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
-=======
 import { useEffect, useMemo, useState } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
 import Table from "../Components/Globals/Tables/Table";
 import useAxios from "../Axios/axios";
 import Alert from "../Components/AlertsComponents/Alert";
->>>>>>> main
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -61,17 +56,13 @@ export default function Products() {
     },
   ]);
 
-<<<<<<< HEAD
-  //  columns={columns} data={data} />;
-  return <ProductPopUp />;
-=======
   const handleOpenPupOp = () => {
     if (popUpIsOpen) {
       setPopUpIsOpen(false);
     } else {
-      setPopUpIsOpen(true)
+      setPopUpIsOpen(true);
     }
-  }
+  };
   return (
     <>
       <Table
@@ -81,16 +72,15 @@ export default function Products() {
         deleteObject={deleteObjectAsync}
         setPopUpIsOpen={handleOpenPupOp}
       />
-      <div className={`${popUpIsOpen && 'hidden'} flex`}>
+      <div className={`${popUpIsOpen && "hidden"} flex`}>
         <ProductPopUp
           getProducts={getProductsAsync}
           defaultData={selectedItem}
           setPopUpIsOpen={handleOpenPupOp}
-          setAlertOpen={setAlertOpen} />
+          setAlertOpen={setAlertOpen}
+        />
       </div>
       {alertOpen && <Alert />}
-
     </>
   );
->>>>>>> main
 }

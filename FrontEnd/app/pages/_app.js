@@ -14,11 +14,13 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthContext.Provider value={user}>
-
       <PrivateRoute>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+          rel="stylesheet"
+        />
         <div className="flex flex-col">
           {/* Side Bar grid */}
           <div className=" h-20 absolute md:h-screen ">
@@ -32,17 +34,10 @@ function MyApp({ Component, pageProps }) {
             <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-16">
               {/* Content grid */}
               <div className="col-span-12">
-<<<<<<< HEAD
-                <Component {...pageProps} />
-              </div>
-              <div className="m-3 col-span-12">
-                <Table />
-=======
                 <div className=" col-span-12 md:col-span-10 lg:col-span-12 mt-10 mx-5">
                   {/* <DashboardCard /> */}
                   <Component {...pageProps} />
                 </div>
->>>>>>> main
               </div>
             </div>
           </div>
