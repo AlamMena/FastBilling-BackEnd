@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthContext.Provider value={user}>
       <PrivateRoute>
-        <div className="flex flex-col h-screen w-screen">
+        <div className="flex flex-col">
           {/* Side Bar grid */}
           <div className=" h-20 absolute md:h-screen ">
             <SideBar />
@@ -25,13 +25,15 @@ function MyApp({ Component, pageProps }) {
             <div className="fixed">
               <TopBar />
             </div>
-            <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-24">
+            <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-16">
               {/* Content grid */}
-              {/* lg:col-span 7 when you are done with the table */}
-              <div className="ml-3 col-span-12 md:col-span-10 lg:col-span-12">
-                {/* <DashboardCard /> */}
-                <Table />
+              <div className="col-span-12">
+                <Dashboard />
+
                 {/* <Component {...pageProps} /> */}
+              </div>
+              <div className="m-3 col-span-12">
+                <Table />
               </div>
             </div>
           </div>

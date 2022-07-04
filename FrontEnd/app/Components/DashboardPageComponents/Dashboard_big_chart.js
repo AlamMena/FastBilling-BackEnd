@@ -58,7 +58,7 @@ export default function BigChart() {
     },
   ];
   return (
-    <div className=" bg-white rounded-lg h-64 p-3">
+    <div className=" bg-white rounded-lg h-64 p-3 mt-4">
       <div className="flex justify-between mb-3 items-center tracking-wide">
         <div className="text-md font-bold">Estadisticas</div>
         <div className="flex items-center mr-2 text-blue-500  ">
