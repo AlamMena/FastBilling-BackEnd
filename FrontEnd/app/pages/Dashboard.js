@@ -1,4 +1,4 @@
-import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/dashboard_card";
+import DashboardCard from "../Components/DashboardPageComponents/Dashboard_Card/Dashboard_card";
 import React, { useContext } from "react";
 import AuthContext from "../Auth/AuthContext";
 import Chart from "../Components/DashboardPageComponents/Dashboard_chart";

@@ -1,17 +1,17 @@
 .form{
-    @apply bg-white max-w-lg rounded-lg min-w-min p-4 font-semibold text-sm
+    @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
 }
 .form_row{
-@apply flex py-2
+@apply flex py-3
 }
 .container__input{
     @apply flex flex-col w-full mx-2 space-y-1
 }
 .form__input{
-    @apply w-full outline rounded-lg px-2 py-1 outline-1 outline-neutral-400
+    @apply w-full outline rounded-lg px-2 py-2 outline-1 outline-neutral-400
 }
 .label{
-    @apply flex flex-auto items-center text-neutral-600
+    @apply flex flex-auto items-center 
 }
 .label_icon{
     @apply text-sm ml-2
@@ -21,4 +21,12 @@
 }
 .input_error{
     @apply outline outline-1 outline-red-400
+}
+
+.top_container {
+    @apply w-full bg-blue-500 rounded-t-2xl p-4 text-white;
+}
+
+.title {
+    @apply text-lg flex justify-between items-center;
 }

@@ -59,7 +59,7 @@ export default function Chart() {
   ];
 
   return (
-    <div className="bg-white h-72 rounded-2xl p-3">
+    <div className="bg-white h-72 rounded-2xl p-3 ">
       <div className="flex justify-between">
         <div className=" tracking-wide font-semibold">Ganancias este mes</div>
         <div className=" text-2xl">
@@ -67,7 +67,7 @@ export default function Chart() {
         </div>
       </div>
       <div className="font-bold text-2xl mb-4">$13,546</div>
-      <ResponsiveContainer width="95%" height="70%">
+      <ResponsiveContainer width="95%" height="75%">
         <BarChart
           width={500}
           height={300}

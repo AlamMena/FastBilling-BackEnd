@@ -1,4 +1,6 @@
 import ProductList from "../Components/ProductsComponents/Product_List";
+import React, { useMemo } from "react";
+import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
 
 export default function Products() {
   const data = useMemo(() => [
@@ -29,6 +31,6 @@ export default function Products() {
     },
   ]);
 
-//   return <DefaultTable columns={columns} data={data} />;
-    return <ProductPopUp/>
+  //  columns={columns} data={data} />;
+  return <ProductPopUp />;
 }

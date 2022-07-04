@@ -1,13 +1,13 @@
 import "../styles/globals.css";
 import React from "react";
-import SideBar from "../Components/SideBarMenuComponents/sidebar_menu";
+import SideBar from "../Components/SideBarMenuComponents/Sidebar_menu";
 import TopBar from "../Components/TopBarComponents/Top_Bar";
 import useAuth from "../Auth/useAuth";
 import AuthContext from "../Auth/AuthContext";
 import PrivateRoute from "../Auth/PrivateRoute";
 import Dashboard from "./Dashboard";
 import Products from "./Products";
-import Table from "../Components/Globals/Tables/table";
+import Table from "../Components/Globals/Tables/Table";
 
 function MyApp({ Component, pageProps }) {
   const { user } = useAuth();
@@ -28,9 +28,7 @@ function MyApp({ Component, pageProps }) {
             <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-16">
               {/* Content grid */}
               <div className="col-span-12">
-                <Dashboard />
-
-                {/* <Component {...pageProps} /> */}
+                <Component {...pageProps} />
               </div>
               <div className="m-3 col-span-12">
                 <Table />
