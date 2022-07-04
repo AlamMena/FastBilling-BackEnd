@@ -58,7 +58,7 @@ export class CoreController {
 
             // default data
             entity.IsDeleted = false;
-            entity.CreatedAt = Date.now;
+            entity.CreatedAt = new Date().getDate();
             entity.CreatedBy = req.headers['authorization']?.split(' ')[1];// add user id
 
             await entity.save();
@@ -105,7 +105,7 @@ export class CoreController {
 
             const model = mongoose.model(this.CollectionName, this.ModelSchema);
 
-            const data = { IsDeleted: true, UpdatedBy: req.headers['authorization']?.split(' ')[1], UpdatedAt: Date.now }
+            const data = { IsDeleted: true, UpdatedBy: req.headers['authorization']?.split(' ')[1], UpdatedAt: new Date().getDate() }
 
             const response = await model.updateOne({ _id: id }, { $set: data });
 

@@ -1,36 +1,96 @@
 import ProductList from "../Components/ProductsComponents/Product_List";
+<<<<<<< HEAD
 import React, { useMemo } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
+=======
+import { useEffect, useMemo, useState } from "react";
+import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
+import Table from "../Components/Globals/Tables/Table";
+import useAxios from "../Axios/axios";
+import Alert from "../Components/AlertsComponents/Alert";
+>>>>>>> main
 
 export default function Products() {
-  const data = useMemo(() => [
-    {
-      Name: "Alam",
-      LastName: "Beato",
-      Age: "21",
-    },
-    {
-      Name: "Alex",
-      LastName: "Mezquita",
-      Age: "24",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+
+  const [popUpIsOpen, setPopUpIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({});
+  const [alertOpen, setAlertOpen] = useState(false);
+  const { axiosInstance } = useAxios();
+
+  const getProductsAsync = async () => {
+    try {
+      const { data } = await axiosInstance.get("v1/products?page=1&limit=20");
+      console.log(data);
+
+      setProducts(data.filter((item) => item.IsDeleted === false));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteObjectAsync = async (id) => {
+    try {
+      await axiosInstance.delete(`v1/product?id=${id}`);
+      await getProductsAsync();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProductsAsync();
+  }, []);
 
   const columns = useMemo(() => [
     {
-      Header: "Name",
-      accessor: "Name",
+      Header: "Nombre",
+      accessor: "name",
     },
     {
-      Header: "Age",
-      accessor: "Age",
+      Header: "Precio",
+      accessor: "price",
     },
     {
-      Header: "LastName",
-      accessor: "LastName",
+      Header: "Costo",
+      accessor: "cost",
+    },
+    {
+      Header: "Beneficio",
+      accessor: "benefit",
     },
   ]);
 
+<<<<<<< HEAD
   //  columns={columns} data={data} />;
   return <ProductPopUp />;
+=======
+  const handleOpenPupOp = () => {
+    if (popUpIsOpen) {
+      setPopUpIsOpen(false);
+    } else {
+      setPopUpIsOpen(true)
+    }
+  }
+  return (
+    <>
+      <Table
+        columns={columns}
+        data={products}
+        setObject={setSelectedItem}
+        deleteObject={deleteObjectAsync}
+        setPopUpIsOpen={handleOpenPupOp}
+      />
+      <div className={`${popUpIsOpen && 'hidden'} flex`}>
+        <ProductPopUp
+          getProducts={getProductsAsync}
+          defaultData={selectedItem}
+          setPopUpIsOpen={handleOpenPupOp}
+          setAlertOpen={setAlertOpen} />
+      </div>
+      {alertOpen && <Alert />}
+
+    </>
+  );
+>>>>>>> main
 }

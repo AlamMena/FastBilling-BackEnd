@@ -1,5 +1,6 @@
 .form{
     @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
+
 }
 .form_row{
 @apply flex py-3

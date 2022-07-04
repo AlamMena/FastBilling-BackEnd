@@ -1,7 +1,7 @@
 /* Card styling */
 
 .card {
-  @apply bg-white min-w-max md:w-5/12 h-20 flex m-2 flex-row items-center justify-between p-4 rounded-2xl ;
+  @apply bg-white w-72 text-lg h-20 flex m-2 flex-row items-center justify-between p-4 rounded-2xl ;
 }
 
 .card_elements {
@@ -31,7 +31,7 @@
 /* Hover Card  */
 
 .card:hover {
-  @apply bg-blue-600;
+  @apply bg-blue-600 cursor-pointer;
 }
 
 .card:hover .card_icon {
