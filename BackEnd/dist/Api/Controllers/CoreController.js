@@ -54,7 +54,7 @@ class CoreController {
                 const entity = new model(req.body);
                 // default data
                 entity.IsDeleted = false;
-                entity.CreatedAt = Date.now;
+                entity.CreatedAt = new Date().getDate();
                 entity.CreatedBy = (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1]; // add user id
                 yield entity.save();
                 return res.status(201).send();
@@ -90,7 +90,7 @@ class CoreController {
                     return res.status(404).send({ message: "Resource not found" });
                 }
                 const model = mongoose_1.default.model(this.CollectionName, this.ModelSchema);
-                const data = { IsDeleted: true, UpdatedBy: (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1], UpdatedAt: Date.now };
+                const data = { IsDeleted: true, UpdatedBy: (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1], UpdatedAt: new Date().getDate() };
                 const response = yield model.updateOne({ _id: id }, { $set: data });
                 return res.status(200).send(response);
             }

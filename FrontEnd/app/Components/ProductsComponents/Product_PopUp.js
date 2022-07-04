@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillExclamationCircle,
   AiFillFileExclamation,
@@ -8,26 +8,46 @@ import {
 } from "react-icons/ai";
 import styles from "../ProductsComponents/Product_Popup.module.css";
 import { useForm } from "react-hook-form";
+import useAxios from "../../Axios/axios";
 
-export default function ProductPopUp() {
+export default function ProductPopUp({ getProducts, defaultData }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
     getValues,
     setValue,
+    reset,
   } = useForm({
-    defaultValues: { name:'product',price: 0, cost: 0, benefit: 0 },
   });
+
+  useEffect(() => {
+    reset(defaultData);
+  }, [defaultData]);
 
   const calculateBenefit = () => {
     const data = getValues();
     const benefit = data.price - data.cost;
-    setValue("Benefit", benefit);
+    setValue("benefit", benefit);
   };
-  const onSubmit = (e) => {
-    const data = JSON.stringify(e);
-    console.log(data);
+  const { axiosInstance } = useAxios();
+  const upsertProductAsync = async (data) => {
+    try {
+      if (data._id) {
+        await axiosInstance.put("v1/product", data);
+      } else {
+        await axiosInstance.post("v1/product", data);
+      }
+      await getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleCancel = () => {
+    reset({ name: "", price: 0, cost: 0,benefit:0,description:'' });
+  };
+  const onSubmit = (data) => {
+    upsertProductAsync(data);
   };
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -68,10 +88,11 @@ export default function ProductPopUp() {
         <div className={styles.container__input}>
           <label className=" flex-auto">Precio</label>
           <input
-            {...register("price")}
-            onChange={() => {
-              calculateBenefit();
-            }}
+            {...register("price", {
+              onChange: (e) => {
+                calculateBenefit();
+              },
+            })}
             className={styles.form__input}
             type="number"
             placeholder="$10.20"
@@ -81,10 +102,11 @@ export default function ProductPopUp() {
         <div className={styles.container__input}>
           <label className=" flex-auto">Costo</label>
           <input
-            {...register("cost")}
-            onChange={() => {
-              calculateBenefit();
-            }}
+            {...register("cost", {
+              onChange: (e) => {
+                calculateBenefit();
+              },
+            })}
             className={styles.form__input}
             type="number"
             placeholder="$12.25"
@@ -94,7 +116,7 @@ export default function ProductPopUp() {
         <div className={styles.container__input}>
           <label className=" flex-auto">Beneficio</label>
           <input
-            {...register("Beneficio")}
+            {...register("benefit")}
             className={styles.form__input}
             type="number"
             placeholder="$2.05"
@@ -110,7 +132,9 @@ export default function ProductPopUp() {
           Crear producto
         </button>
         <button
-          value="Crear"
+          value="Cancelar"
+          type="button"
+          onClick={handleCancel}
           className="bg-red-500 text-white px-4 py-2 rounded-lg "
         >
           Cancelar

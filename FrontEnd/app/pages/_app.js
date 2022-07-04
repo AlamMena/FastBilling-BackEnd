@@ -28,15 +28,9 @@ function MyApp({ Component, pageProps }) {
             <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-16">
               {/* Content grid */}
               <div className="col-span-12">
-                <Dashboard />
-                {/* <Component {...pageProps} /> */}
-                {/* lg:col-span 7 when you are done with the table */}
                 <div className="ml-3 col-span-12 md:col-span-10 lg:col-span-12">
                   {/* <DashboardCard /> */}
                   <Component {...pageProps} />
-                </div>
-                <div className="m-3 col-span-12">
-                  <Table />
                 </div>
               </div>
             </div>

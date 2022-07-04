@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const ProductSchema = new mongoose_1.Schema({
-    Name: { type: String, required: true },
-    Description: { type: String },
-    ImageUrl: { type: String },
-    Price: { type: Number },
-    Cost: { type: Number },
+    name: { type: String, required: true },
+    description: { type: String },
+    imageUrl: { type: String },
+    price: { type: Number },
+    cost: { type: Number },
+    benefit: { type: Number },
     IsDeleted: { type: Boolean },
     CreatedAt: { type: Date },
     CreatedBy: { type: String },

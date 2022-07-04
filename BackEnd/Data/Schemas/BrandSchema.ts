@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
 
 const BrandSchema = new Schema({
-    Name: { type: String, required: true },
+    name: { type: String, required: true },
     
     IsDeleted: { type: Boolean },
 
