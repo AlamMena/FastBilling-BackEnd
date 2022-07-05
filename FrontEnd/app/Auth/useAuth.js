@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
-import auth, { app } from "../Firebase/FirebaseAppConfig";
+import auth, { app } from "../Firebase/FirebaseAuth";
 import { signInWithEmailAndPassword, getAuth } from "@firebase/auth";
 import { useRouter } from "next/router";
 

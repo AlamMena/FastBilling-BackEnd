@@ -7,9 +7,10 @@ import {
   AiOutlineWarning,
   AiOutlineClose,
 } from "react-icons/ai";
-import styles from "../Globals/Styling/Product_PopUp.module.css";
+import styles from "../Globals/Styling/Product_Popup.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
+import ImagePoster from "../Globals/ImagePoster";
 
 export default function ProductPopUp({
   getData,
@@ -18,6 +19,7 @@ export default function ProductPopUp({
   setAlertOpen,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState([]);
   const { axiosInstance } = useAxios();
 
   const {
@@ -64,7 +66,7 @@ export default function ProductPopUp({
     }
   };
   const resetForm = () => {
-    reset({ name: "", price: 0, cost: 0, benefit: 0, description: "" });
+    reset({ name: "", price: 0, cost: 0, benefit: 0, description: "", images: ['url 1', 'url 2'] });
   };
   const onSubmit = (data) => {
     upsertProductAsync(data);
@@ -82,9 +84,8 @@ export default function ProductPopUp({
             </label>
             <input
               {...register("name", { required: true })}
-              className={`${styles["form__input"]} ${
-                errors.name && styles["input_error"]
-              }`}
+              className={`${styles["form__input"]} ${errors.name && styles["input_error"]
+                }`}
               placeholder="product name"
             ></input>
             <label className={styles.label_error}>
@@ -144,6 +145,7 @@ export default function ProductPopUp({
             ></input>
           </div>
         </div>
+        <ImagePoster images={images} setImages={setImages} />
         <div className={styles.loading_container}>
           {!isLoading && (
             <button

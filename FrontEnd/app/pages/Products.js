@@ -15,7 +15,7 @@ export default function Products() {
 
   const getProductsAsync = async () => {
     try {
-      const { data } = await axiosInstance.get("v1/products?page=1&limit=20");
+      const { data } = await axiosInstance.get("v1/products?page=1&limit=200");
       console.log(data);
 
       setProducts(data.filter((item) => item.IsDeleted === false));
@@ -74,7 +74,7 @@ export default function Products() {
       />
       <div className={`${!popUpIsOpen && "hidden"} flex`}>
         <ProductPopUp
-          getProducts={getProductsAsync}
+          getData={getProductsAsync}
           defaultData={selectedItem}
           setPopUpIsOpen={handleOpenPupOp}
           setAlertOpen={setAlertOpen}

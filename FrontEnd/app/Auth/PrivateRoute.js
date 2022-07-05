@@ -5,7 +5,7 @@ import Loading from "../Components/Loading";
 import Index from "../pages/index";
 import axios from "axios";
 import useAuth from "./useAuth";
-import auth from "../Firebase/FirebaseAppConfig";
+import auth from "../Firebase/FirebaseAuth";
 
 export default function PrivateRoute({ children }) {
   const [isLoading, setLoading] = useState(true);

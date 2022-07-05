@@ -2,63 +2,64 @@
     @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
 } */
 .form_container {
-    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black ;
+  @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black;
 }
 
 .form {
-    @apply bg-white  rounded-lg min-w-min p-4 text-sm
+  @apply bg-white md:max-w-xl md:max-h-[500px] h-full rounded-none  overflow-y-scroll md:rounded-lg min-w-min p-4 text-sm;
 }
-.form_row{
-@apply flex py-3
+.form_row {
+  @apply flex py-3;
 }
-.container__input{
-    @apply flex flex-col w-full mx-2 space-y-1
+.container__input {
+  @apply flex flex-col w-full mx-2 space-y-1;
 }
-.form__input{
-    @apply w-full outline rounded-lg px-2 py-2 outline-1 outline-neutral-400
+.form__input {
+  @apply w-full outline rounded-lg px-2 py-2 outline-1 outline-neutral-400;
 }
-.label{
-    @apply flex flex-auto items-center 
+.label {
+  @apply flex flex-auto items-center;
 }
-.label_icon{
-    @apply text-sm ml-2
+.label_icon {
+  @apply text-sm ml-2;
 }
 
 .label_p {
-    @apply flex-auto;
+  @apply flex-auto;
 }
 
 .label_error {
-    @apply text-red-500 px-2 text-sm
+  @apply text-red-500 px-2 text-sm;
 }
-.input_error{
-    @apply outline outline-1 outline-red-400
+.input_error {
+  @apply outline outline-1 outline-red-400;
 }
 
 .top_container {
-    @apply w-full bg-blue-500 rounded-t-2xl p-4 text-white;
+  @apply w-full bg-blue-500 rounded-t-2xl p-4 text-white;
 }
 
 .title {
-    @apply text-lg flex justify-between items-center;
+  @apply text-lg flex justify-between items-center;
 }
 
 .loading_container {
-    @apply flex space-x-2 justify-end mt-4;
+  @apply flex space-x-2 justify-end mt-4;
 }
 
 .create_button {
-    @apply bg-blue-500 text-white px-4 py-2 rounded-lg;
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg;
 }
 
 .cancel_button {
-    @apply bg-red-500 text-white px-4 py-2 rounded-lg;
+  @apply bg-red-500 text-white px-4 py-2 rounded-lg;
 }
 
 .loading {
-    @apply py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 inline-flex items-center;
+  @apply py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 inline-flex items-center;
 }
 
 .loading_svg {
-    @apply inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600;
+  @apply inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600;
 }
+
