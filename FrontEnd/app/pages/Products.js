@@ -1,7 +1,7 @@
 import ProductList from "../Components/ProductsComponents/Product_List";
 import { useEffect, useMemo, useState } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
-import Table from "../Components/Globals/Tables/Table";
+import Table from "../Components/ProductsComponents/Table";
 import useAxios from "../Axios/axios";
 import Alert from "../Components/AlertsComponents/Alert";
 
@@ -72,7 +72,7 @@ export default function Products() {
         deleteObject={deleteObjectAsync}
         setPopUpIsOpen={handleOpenPupOp}
       />
-      <div className={`${popUpIsOpen && "hidden"} flex`}>
+      <div className={`${!popUpIsOpen && "hidden"} flex`}>
         <ProductPopUp
           getProducts={getProductsAsync}
           defaultData={selectedItem}

@@ -1,9 +1,15 @@
 import { useTable } from "react-table";
 import { useMemo, useState } from "react";
-import styles from "../Tables/table.module.css";
+import styles from "../Globals/Styling/Table.module.css";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 
-export default function Products({ columns, data, setObject, deleteObject, setPopUpIsOpen }) {
+export default function Products({
+  columns,
+  data,
+  setObject,
+  deleteObject,
+  setPopUpIsOpen,
+}) {
   const tableInstance = useTable({ columns, data });
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
@@ -61,7 +67,12 @@ export default function Products({ columns, data, setObject, deleteObject, setPo
                       </td>
                     );
                   })}
-                  <td className={styles.table_body_td} onClick={() => { deleteObject(row.original._id) }}>
+                  <td
+                    className={styles.table_body_td}
+                    onClick={() => {
+                      deleteObject(row.original._id);
+                    }}
+                  >
                     <AiOutlineDelete />
                   </td>
                 </tr>

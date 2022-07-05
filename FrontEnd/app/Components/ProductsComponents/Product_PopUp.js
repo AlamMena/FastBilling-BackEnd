@@ -7,7 +7,7 @@ import {
   AiOutlineWarning,
   AiOutlineClose,
 } from "react-icons/ai";
-import styles from "../ProductsComponents/Product_Popup.module.css";
+import styles from "../Globals/Styling/Product_PopUp.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 
@@ -70,9 +70,9 @@ export default function ProductPopUp({
     upsertProductAsync(data);
   };
   return (
-    <div className="fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black">
+    <div className={styles.form_container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="text-lg">Products</h1>
+        <h1 className={styles.title}>Products</h1>
         <div className={styles.form_row}>
           {/* name */}
           <div className={styles.container__input}>
@@ -121,7 +121,7 @@ export default function ProductPopUp({
           </div>
           {/* cost */}
           <div className={styles.container__input}>
-            <label className=" flex-auto">Costo</label>
+            <label className={styles.label_p}>Costo</label>
             <input
               {...register("cost", {
                 onChange: (e) => {
@@ -135,7 +135,7 @@ export default function ProductPopUp({
           </div>
           {/* benefit */}
           <div className={styles.container__input}>
-            <label className=" flex-auto">Beneficio</label>
+            <label className={styles.label_p}>Beneficio</label>
             <input
               {...register("benefit")}
               className={styles.form__input}
@@ -144,26 +144,22 @@ export default function ProductPopUp({
             ></input>
           </div>
         </div>
-        <div className="flex space-x-2 justify-end mt-4">
+        <div className={styles.loading_container}>
           {!isLoading && (
             <button
               value="Crear"
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg "
+              className={styles.create_button}
             >
               Crear producto
             </button>
           )}
 
           {isLoading && (
-            <button
-              disabled
-              type="button"
-              class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
-            >
+            <button disabled type="button" className={styles.loading}>
               <svg
                 role="status"
-                class="inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600"
+                className={styles.loading_svg}
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +183,7 @@ export default function ProductPopUp({
             onClick={() => {
               resetForm(), setPopUpIsOpen(false);
             }}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg "
+            className={styles.cancel_button}
           >
             Cancelar
           </button>

@@ -7,7 +7,6 @@ import AuthContext from "../Auth/AuthContext";
 import PrivateRoute from "../Auth/PrivateRoute";
 import Dashboard from "./Dashboard";
 import Products from "./Products";
-import Table from "../Components/Globals/Tables/Table";
 
 function MyApp({ Component, pageProps }) {
   const { user } = useAuth();

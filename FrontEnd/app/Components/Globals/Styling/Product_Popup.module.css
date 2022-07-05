@@ -1,6 +1,9 @@
 /* .form{
     @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
 } */
+.form_container {
+    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black;
+}
 
 .form {
     @apply bg-white max-w-lg rounded-lg min-w-min p-4 text-sm
@@ -20,6 +23,11 @@
 .label_icon{
     @apply text-sm ml-2
 }
+
+.label_p {
+    @apply flex-auto;
+}
+
 .label_error {
     @apply text-red-500 px-2 text-sm
 }
@@ -33,4 +41,24 @@
 
 .title {
     @apply text-lg flex justify-between items-center;
+}
+
+.loading_container {
+    @apply flex space-x-2 justify-end mt-4;
+}
+
+.create_button {
+    @apply bg-blue-500 text-white px-4 py-2 rounded-lg;
+}
+
+.cancel_button {
+    @apply bg-red-500 text-white px-4 py-2 rounded-lg;
+}
+
+.loading {
+    @apply py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 inline-flex items-center;
+}
+
+.loading_svg {
+    @apply inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600;
 }
