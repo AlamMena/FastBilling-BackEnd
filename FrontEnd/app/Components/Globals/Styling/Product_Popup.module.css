@@ -2,11 +2,11 @@
     @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
 } */
 .form_container {
-    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black;
+    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black ;
 }
 
 .form {
-    @apply bg-white max-w-lg rounded-lg min-w-min p-4 text-sm
+    @apply bg-white  rounded-lg min-w-min p-4 text-sm
 }
 .form_row{
 @apply flex py-3

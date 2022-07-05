@@ -1,9 +1,8 @@
+import React from "react";
 import { useTable } from "react-table";
-import { useMemo, useState } from "react";
 import styles from "../Globals/Styling/Table.module.css";
-import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
-
-export default function Products({
+import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
+export default function BrandTable({
   columns,
   data,
   setObject,
@@ -18,7 +17,7 @@ export default function Products({
     setObject(e.original);
     setPopUpIsOpen(true);
   };
-  const title = "Tabla de productos ";
+  const title = "Tabla de Marcas";
 
   return (
     <div className="bg-white mx-3 p-3 rounded-xl ">

@@ -1,9 +1,9 @@
 import ProductList from "../Components/ProductsComponents/Product_List";
 import { useEffect, useMemo, useState } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
-import Table from "../Components/ProductsComponents/Table";
 import useAxios from "../Axios/axios";
 import Alert from "../Components/AlertsComponents/Alert";
+import Table from "../Components/ProductsComponents/Table";
 
 export default function Products() {
   const [products, setProducts] = useState([]);

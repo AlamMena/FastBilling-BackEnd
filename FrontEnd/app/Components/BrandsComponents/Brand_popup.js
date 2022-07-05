@@ -1,17 +1,11 @@
+import React from "react";
 import { useEffect, useState } from "react";
-import {
-  AiFillExclamationCircle,
-  AiFillFileExclamation,
-  AiOutlineExclamation,
-  AiOutlineExclamationCircle,
-  AiOutlineWarning,
-  AiOutlineClose,
-} from "react-icons/ai";
 import styles from "../Globals/Styling/Product_PopUp.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
+import { AiFillExclamationCircle } from "react-icons/ai";
 
-export default function ProductPopUp({
+export default function BrandPopUp({
   getData,
   defaultData,
   setPopUpIsOpen,
@@ -24,8 +18,6 @@ export default function ProductPopUp({
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
-    setValue,
     reset,
   } = useForm();
 
@@ -33,20 +25,13 @@ export default function ProductPopUp({
     reset(defaultData);
   }, [defaultData]);
 
-  const calculateBenefit = () => {
-    const data = getValues();
-    const benefit = data.price - data.cost;
-    setValue("benefit", benefit);
-  };
-
   const upsertProductAsync = async (data) => {
     setIsLoading(true);
-
     try {
       if (data._id) {
-        await axiosInstance.put("v1/product", data);
+        await axiosInstance.put("v1/brand", data);
       } else {
-        await axiosInstance.post("v1/product", data);
+        await axiosInstance.post("v1/brand", data);
       }
       // setPopUpIsOpen(false);
       setTimeout(() => {
@@ -63,29 +48,32 @@ export default function ProductPopUp({
       console.log(error);
     }
   };
-  const resetForm = () => {
-    reset({ name: "", price: 0, cost: 0, benefit: 0, description: "" });
-  };
+
   const onSubmit = (data) => {
     upsertProductAsync(data);
   };
+
+  const resetForm = () => {
+    reset({ name: "", description: "" });
+  };
+
   return (
     <div className={styles.form_container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={styles.title}>Products</h1>
+        <h1 className={styles.title}>Marca</h1>
         <div className={styles.form_row}>
           {/* name */}
           <div className={styles.container__input}>
             <label className={styles.label}>
               Nombre
-              <AiFillExclamationCircle className={styles.label_icon} />
+              <AiFillExclamationCircle />
             </label>
             <input
               {...register("name", { required: true })}
               className={`${styles["form__input"]} ${
                 errors.name && styles["input_error"]
               }`}
-              placeholder="product name"
+              placeholder="Nombre de la Marca"
             ></input>
             <label className={styles.label_error}>
               {errors.name?.type === "required" && "El nombre es obligatorio"}
@@ -94,53 +82,12 @@ export default function ProductPopUp({
         </div>
         {/* description */}
         <div className={styles.form_row}>
-          {/* description */}
           <div className={styles.container__input}>
             <label className={styles.label}>Descripcion</label>
             <input
               {...register("description")}
               className={styles.form__input}
               placeholder="mi descripcion"
-            ></input>
-          </div>
-        </div>
-        <div className={styles.form_row}>
-          {/* price */}
-          <div className={styles.container__input}>
-            <label className=" flex-auto">Precio</label>
-            <input
-              {...register("price", {
-                onChange: (e) => {
-                  calculateBenefit();
-                },
-              })}
-              className={styles.form__input}
-              type="number"
-              placeholder="$10.20"
-            ></input>
-          </div>
-          {/* cost */}
-          <div className={styles.container__input}>
-            <label className={styles.label_p}>Costo</label>
-            <input
-              {...register("cost", {
-                onChange: (e) => {
-                  calculateBenefit();
-                },
-              })}
-              className={styles.form__input}
-              type="number"
-              placeholder="$12.25"
-            ></input>
-          </div>
-          {/* benefit */}
-          <div className={styles.container__input}>
-            <label className={styles.label_p}>Beneficio</label>
-            <input
-              {...register("benefit")}
-              className={styles.form__input}
-              type="number"
-              placeholder="$2.05"
             ></input>
           </div>
         </div>
@@ -151,7 +98,7 @@ export default function ProductPopUp({
               type="submit"
               className={styles.create_button}
             >
-              Crear producto
+              Crear marca
             </button>
           )}
 
