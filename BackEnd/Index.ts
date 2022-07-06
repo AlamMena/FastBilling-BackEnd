@@ -10,6 +10,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser';
 import { TIMEOUT } from "dns";
 import ProductSchema from "./Data/Schemas/ProductSchema";
+import * as mongooseAutoIncrement from 'mongoose-auto-increment'
 
 
 dotenv.config();
@@ -20,6 +21,10 @@ mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
     console.log('connected');
 });
 
+
+// auto increments
+mongooseAutoIncrement.initialize(mongoose.connection);
+ProductSchema.plugin(mongooseAutoIncrement.plugin, { model: 'Products', field: 'id' })
 
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);

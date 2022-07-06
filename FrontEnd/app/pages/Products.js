@@ -38,7 +38,7 @@ export default function Products() {
   const columns = useMemo(() => [
     {
       Header: "Id",
-      accessor: "",
+      accessor: "id",
     },
     {
       Header: "Image",
@@ -56,7 +56,7 @@ export default function Products() {
       Header: "Vendido",
       accessor: "sold",
     },
-    
+
     {
       Header: "Precio",
       accessor: "price",

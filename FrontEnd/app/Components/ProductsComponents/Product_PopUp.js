@@ -48,7 +48,8 @@ export default function ProductPopUp({
       if (data._id) {
         await axiosInstance.put("v1/product", data);
       } else {
-        await axiosInstance.post("v1/product", data);
+        axiosInstance.post("v1/product", data);
+        axiosInstance.post("v1/product", data);
       }
       // setPopUpIsOpen(false);
       setTimeout(() => {

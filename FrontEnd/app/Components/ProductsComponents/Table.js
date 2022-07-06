@@ -52,7 +52,7 @@ export default function Products({
           <div className="flex flex-col w-min">
             <h1 className="font-semibold text-sm mb-2 ml-2">Categoria</h1>
             <div className="relative">
-              <AiOutlineArrowDown className="absolute right-1 top-1 text-neutral-400" />
+              <AiOutlineArrowDown className="text-sm absolute right-1 top-1 text-neutral-400" />
               <input
                 placeholder="All"
                 className="outline-none text-sm outline-1 rounded-md  px-2 outline-neutral-200 text-gray-400"

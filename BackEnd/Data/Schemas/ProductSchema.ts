@@ -2,7 +2,6 @@ import mongoose, { Schema } from "mongoose";
 //@ts-ignore
 import Inc from 'mongoose-sequence';
 import CoreEntity from "../Core/CoreModel";
-const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const ProductSchema = new Schema({
     name: { type: String, required: true },
@@ -23,5 +22,6 @@ const ProductSchema = new Schema({
     UpdatedBy: { type: String }
 
 });
-ProductSchema.plugin(AutoIncrement, { id: 'id' })
+
+
 export default ProductSchema;
