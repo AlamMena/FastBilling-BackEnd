@@ -6,40 +6,6 @@ import useAxios from "../../Axios/axios";
 import auth from "../../Firebase/FirebaseAppConfig";
 import ProductPopUp from "./Product_PopUp";
 
-const headers = [
-  "No",
-  "Imagen",
-  "Nombre",
-  "Precio",
-  "Costo",
-  "Estado",
-  "Ventas",
-  "Ganancias",
-];
-
-const Products = [
-  {
-    _id: 1,
-    ImageUrl: "",
-    Name: "T-SHIRT BLACK LIVES MATTERS",
-    Price: 29.92,
-    Cost: 12.34,
-    Status: "Active",
-    Sells: 200,
-    Earnings: 2000,
-  },
-  {
-    _id: 2,
-    ImageUrl: "",
-    Name: "T-SHIRT BLACK LIVES MATTERS",
-    Price: 29.92,
-    Cost: 12.34,
-    Status: "Active",
-    Sells: 200,
-    Earnings: 2000,
-  },
-];
-
 const TableHeader = () => {
   return (
     <div className={styles.header}>
@@ -74,19 +40,11 @@ const Table = () => {
       console.log(error);
     }
   };
-  const handle=() => {
-    console.log('alam')
-  }
   useEffect(() => {
     getProductsAsync();
   }, []);
   return (
     <>
-    {/* <div className={!popUpOpen ? 'hidden':'block'}>
-        <ProductPopUp setOpen={setPoUpOpen} />
-      </div> */}
-
-      {/* <button onClick={handle}>Alam</button> */}
       <TableHeader />
       <table className={styles.table}>
         <thead>
@@ -97,7 +55,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {Products.map((product) => {
+          {products.map((product) => {
             return (
               <tr>
                 <td className={styles.table_data}> {product.Id}</td>

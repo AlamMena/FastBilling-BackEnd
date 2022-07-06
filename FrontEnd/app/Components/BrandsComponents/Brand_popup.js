@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import styles from "../Globals/Styling/Product_PopUp.module.css";
+import styles from "../Globals/Styling/Brands_PopUp.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
@@ -84,11 +84,11 @@ export default function BrandPopUp({
         <div className={styles.form_row}>
           <div className={styles.container__input}>
             <label className={styles.label}>Descripcion</label>
-            <input
+            <textarea
               {...register("description")}
               className={styles.form__input}
-              placeholder="mi descripcion"
-            ></input>
+              placeholder="Descripcion de la Marca"
+            ></textarea>
           </div>
         </div>
         <div className={styles.loading_container}>

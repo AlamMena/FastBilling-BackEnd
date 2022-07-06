@@ -2,25 +2,30 @@
     @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
 } */
 .form_container {
-    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black ;
+    @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black;
 }
 
 .form {
-    @apply bg-white  rounded-lg min-w-min p-4 text-sm 
+    @apply bg-white rounded-lg w-96 p-4 m-4 text-sm
 }
-.form_row{
-@apply flex py-3
+
+.form_row {
+    @apply flex py-3
 }
-.container__input{
+
+.container__input {
     @apply flex flex-col w-full mx-2 space-y-1
 }
-.form__input{
+
+.form__input {
     @apply w-full outline rounded-lg px-2 py-2 outline-1 outline-neutral-400
 }
-.label{
-    @apply flex flex-auto items-center 
+
+.label {
+    @apply flex flex-auto items-center
 }
-.label_icon{
+
+.label_icon {
     @apply text-sm ml-2
 }
 
@@ -31,7 +36,8 @@
 .label_error {
     @apply text-red-500 px-2 text-sm
 }
-.input_error{
+
+.input_error {
     @apply outline outline-1 outline-red-400
 }
 
@@ -48,7 +54,7 @@
 }
 
 .create_button {
-    @apply bg-blue-500 text-white px-4 py-2 rounded-lg;
+    @apply  text-black px-4 py-2 rounded-lg hover:bg-gray-300;
 }
 
 .cancel_button {
