@@ -6,7 +6,11 @@
 }
 
 .form {
+<<<<<<< HEAD
   @apply bg-white md:max-w-xl md:max-h-[500px] h-full rounded-none  overflow-y-scroll md:rounded-lg min-w-min p-4 text-sm;
+=======
+    @apply bg-white  rounded-lg min-w-min p-4 text-sm 
+>>>>>>> Alex
 }
 .form_row {
   @apply flex py-3;

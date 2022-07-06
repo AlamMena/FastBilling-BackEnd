@@ -16,7 +16,7 @@ export default function Products() {
     try {
       const { data } = await axiosInstance.get("v1/products?page=1&limit=200");
       console.log(data);
-      setProducts(data);
+      setProducts(data.filter((item) => item.IsDeleted === false));
     } catch (error) {
       console.log(error);
     }
@@ -73,8 +73,6 @@ export default function Products() {
       Header: "Estatus",
       accessor: "IsDeleted",
     },
-
-
   ]);
 
   const handleOpenPupOp = () => {
