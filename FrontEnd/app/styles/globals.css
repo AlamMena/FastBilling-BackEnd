@@ -18,21 +18,7 @@ a {
   box-sizing: border-box;
   font-family: "Varela Round", sans-serif !important;
 }
-*/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-/* Track */
-* ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 8px;
-}
-
-/* Handle */
-* ::-webkit-scrollbar-thumb {
-  @apply bg-neutral-200 rounded-lg
-}
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {

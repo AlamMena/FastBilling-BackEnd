@@ -7,7 +7,6 @@ import Table from "../Components/ProductsComponents/Table";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const [alertOpen, setAlertOpen] = useState(false);
@@ -17,8 +16,7 @@ export default function Products() {
     try {
       const { data } = await axiosInstance.get("v1/products?page=1&limit=200");
       console.log(data);
-
-      setProducts(data.filter((item) => item.IsDeleted === false));
+      setProducts(data);
     } catch (error) {
       console.log(error);
     }
@@ -39,9 +37,26 @@ export default function Products() {
 
   const columns = useMemo(() => [
     {
-      Header: "Nombre",
-      accessor: "name",
+      Header: "Id",
+      accessor: "",
     },
+    {
+      Header: "Image",
+      accessor: "image",
+    },
+    {
+      Header: "Nombre",
+      accessor: "description",
+    },
+    {
+      Header: "Comprado",
+      accessor: "bought",
+    },
+    {
+      Header: "Vendido",
+      accessor: "sold",
+    },
+    
     {
       Header: "Precio",
       accessor: "price",
@@ -54,6 +69,12 @@ export default function Products() {
       Header: "Beneficio",
       accessor: "benefit",
     },
+    {
+      Header: "Estatus",
+      accessor: "IsDeleted",
+    },
+
+
   ]);
 
   const handleOpenPupOp = () => {

@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
             <div className=" md:ml-20 lg:ml-56 grid grid-cols-12 mt-16">
               {/* Content grid */}
               <div className="col-span-12">
-                <div className=" col-span-12 md:col-span-10 lg:col-span-12 mt-10 mx-5">
+                <div className="mb-10 overflow-x-hidden col-span-12 md:col-span-10 lg:col-span-12 mt-10 mx-5">
                   {/* <DashboardCard /> */}
                   <Component {...pageProps} />
                 </div>

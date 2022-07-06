@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import { TIMEOUT } from "dns";
+import ProductSchema from "./Data/Schemas/ProductSchema";
 
 
 dotenv.config();
@@ -18,6 +19,7 @@ const PORT = 8080;
 mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
     console.log('connected');
 });
+
 
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);

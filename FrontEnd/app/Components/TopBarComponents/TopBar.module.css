@@ -1,5 +1,5 @@
 .bar {
-  @apply flex bg-white h-16 md:h-20 p-2 items-center w-screen;
+  @apply flex bg-white h-16 md:h-16 p-2 items-center w-screen;
 }
 
 .topbar_searchbar {
