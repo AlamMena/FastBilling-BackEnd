@@ -31,6 +31,14 @@ const AccountReceivableSchema = new Schema({
 
     document: { type: String },
 
+    transactions: [{
+        Amount: { type: Number, default: 0 },
+        Date: { type: Date },
+        sign: { type: Number },
+        document: { type: String },
+        refNo: { type: Number }
+    }],
+
     // default
     IsDeleted: { type: Boolean },
     CreatedAt: { type: Date },
