@@ -11,15 +11,18 @@ import styles from "../Globals/Styling/Product_Popup.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import ImagePoster from "../Globals/ImagePoster";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import app from "../../Firebase/FirebaseAppConfig";
 
 export default function ProductPopUp({
   getData,
   defaultData,
   setPopUpIsOpen,
-  setAlertOpen,
+  handleAlert,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState([]);
+  const [file, setFile] = useState();
   const { axiosInstance } = useAxios();
 
   const {
@@ -41,33 +44,46 @@ export default function ProductPopUp({
     setValue("benefit", benefit);
   };
 
+  const postImage = async () => {
+    const storage = getStorage(app);
+    const storageRef = ref(storage, "products");
+    const response = await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(response.ref);
+    return url;
+  };
   const upsertProductAsync = async (data) => {
     setIsLoading(true);
 
     try {
+      if (file) {
+        const url = await postImage();
+        data.images = [url];
+      }
       if (data._id) {
         await axiosInstance.put("v1/product", data);
       } else {
-        axiosInstance.post("v1/product", data);
-        axiosInstance.post("v1/product", data);
+        await axiosInstance.post("v1/product", data);
       }
-      // setPopUpIsOpen(false);
-      setTimeout(() => {
-        setIsLoading(false);
-        resetForm();
-        setPopUpIsOpen(false);
-        getData();
-        setAlertOpen(true);
-        setTimeout(() => {
-          setAlertOpen(false);
-        }, 2000);
-      }, 1000);
+      setIsLoading(false);
+      resetForm();
+      setPopUpIsOpen(false);
+      getData();
+      handleAlert("producto guardado exitosamente", "Success");
     } catch (error) {
+      handleAlert("Ha ocurrido un error guardando el producto", "Error");
+      setIsLoading(false);
       console.log(error);
     }
   };
   const resetForm = () => {
-    reset({ name: "", price: 0, cost: 0, benefit: 0, description: "", images: ['url 1', 'url 2'] });
+    reset({
+      name: "",
+      price: 0,
+      cost: 0,
+      benefit: 0,
+      description: "",
+      images: ["url 1", "url 2"],
+    });
   };
   const onSubmit = (data) => {
     upsertProductAsync(data);
@@ -85,8 +101,9 @@ export default function ProductPopUp({
             </label>
             <input
               {...register("name", { required: true })}
-              className={`${styles["form__input"]} ${errors.name && styles["input_error"]
-                }`}
+              className={`${styles["form__input"]} ${
+                errors.name && styles["input_error"]
+              }`}
               placeholder="product name"
             ></input>
             <label className={styles.label_error}>
@@ -100,18 +117,24 @@ export default function ProductPopUp({
           <div className={styles.container__input}>
             <label className={styles.label}>Descripcion</label>
             <input
-              {...register("description")}
+              {...register("description", { required: true })}
               className={styles.form__input}
               placeholder="mi descripcion"
             ></input>
+            <label className={styles.label_error}>
+              {errors.description?.type === "required" &&
+                "La descripcion es obligatoria"}
+            </label>
           </div>
         </div>
         <div className={styles.form_row}>
           {/* price */}
           <div className={styles.container__input}>
-            <label className=" flex-auto">Precio</label>
+            <label className={styles.label_p}>Precio</label>
             <input
               {...register("price", {
+                required: true,
+                min: 0,
                 onChange: (e) => {
                   calculateBenefit();
                 },
@@ -120,12 +143,19 @@ export default function ProductPopUp({
               type="number"
               placeholder="$10.20"
             ></input>
+            <label className={styles.label_error}>
+              {errors.price?.type === "required" ||
+                (errors.price?.type === "min" &&
+                  "El precio debe ser mayor o igual a cero")}
+            </label>
           </div>
           {/* cost */}
           <div className={styles.container__input}>
             <label className={styles.label_p}>Costo</label>
             <input
               {...register("cost", {
+                required: true,
+                min: 0,
                 onChange: (e) => {
                   calculateBenefit();
                 },
@@ -134,19 +164,30 @@ export default function ProductPopUp({
               type="number"
               placeholder="$12.25"
             ></input>
+            <label className={styles.label_error}>
+              {errors.cost?.type === "required" ||
+                (errors.cost?.type === "min" &&
+                  "El costo debe ser mayor o igual a cero")}
+            </label>
           </div>
           {/* benefit */}
           <div className={styles.container__input}>
             <label className={styles.label_p}>Beneficio</label>
             <input
-              {...register("benefit")}
+              {...register("benefit", {
+                required: true,
+              })}
               className={styles.form__input}
               type="number"
               placeholder="$2.05"
             ></input>
+            <label className={styles.label_error}>
+              {errors?.type === "required" &&
+                "El precio debe ser mayor o igual a cero"}
+            </label>
           </div>
         </div>
-        <ImagePoster images={images} setImages={setImages} />
+        <ImagePoster images={images} setImages={setImages} setFile={setFile} />
         <div className={styles.loading_container}>
           {!isLoading && (
             <button

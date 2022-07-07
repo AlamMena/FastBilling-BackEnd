@@ -1,9 +1,17 @@
-import { useTable, useGlobalFilter, useAsyncDebounce } from "react-table";
+import {
+  useTable,
+  useGlobalFilter,
+  useAsyncDebounce,
+  useSortBy,
+} from "react-table";
 import filterstyles from "../Globals/Styling/GlobalFilter.module.css";
 import { useMemo, useState } from "react";
 import styles from "../Globals/Styling/Table.module.css";
+import buttonStyles from "../Globals/Styling/Button.module.css";
+
 import {
   AiOutlineArrowDown,
+  AiOutlineArrowUp,
   AiOutlineDelete,
   AiOutlinePlus,
   AiOutlineSearch,
@@ -37,7 +45,7 @@ export default function Products({
   deleteObject,
   setPopUpIsOpen,
 }) {
-  const tableInstance = useTable({ columns, data }, useGlobalFilter);
+  const tableInstance = useTable({ columns, data }, useGlobalFilter, useSortBy);
   const {
     getTableProps,
     getTableBodyProps,
@@ -94,14 +102,17 @@ export default function Products({
         </div>
       </div>
 
-      <div className="bg-white mx-3 p-3 rounded-xl ">
+      <div className="bg-white px-6 py-8 rounded-xl ">
         <div className=" flex justify-between items-center px-3">
           <div className="text-lg font-semibold tracking-wide">{title}</div>
           <div className="text-lg">
-            <AiOutlinePlus
-              className="cursor-pointer"
+            <button
+              value="Crear"
               onClick={setPopUpIsOpen}
-            />
+              className={buttonStyles.create_button}
+            >
+              Crear producto
+            </button>
           </div>
         </div>
         <div className=" overflow-auto">
@@ -111,10 +122,23 @@ export default function Products({
                 <tr {...headerGroup.getHeaderGroupProps()} className="p">
                   {headerGroup.headers.map((column) => (
                     <th
-                      {...column.getHeaderProps()}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
                       className={styles.table_head_th}
                     >
-                      {column.render("Header")}
+                      <div className="flex space-x-1 items-center">
+                        <span>{column.render("Header")}</span>
+                        <span>
+                          {column.isSorted ? (
+                            column.isSortedDesc ? (
+                              <AiOutlineArrowDown />
+                            ) : (
+                              <AiOutlineArrowUp />
+                            )
+                          ) : (
+                            ""
+                          )}
+                        </span>
+                      </div>
                     </th>
                   ))}
                   <th className={styles.table_head_th}>Edit</th>
@@ -123,68 +147,80 @@ export default function Products({
             </thead>
 
             <tbody {...getTableBodyProps()}>
-              {rows.map((row, i) => {
-                prepareRow(row);
-                return (
-                  <tr
-                    {...row.getRowProps()}
-                    className={styles.table_body_tr}
-                    onClick={() => {
-                      handleSelect(row);
-                    }}
-                  >
-                    {row.cells.map((cell) => {
-                      if (cell.column.Header === "Image") {
-                        return (
-                          <td
-                            {...cell.getCellProps()}
-                            className={styles.table_body_td}
-                          >
-                            <img src="" className="w-12 h-12 rounded-lg" />
-                          </td>
-                        );
-                      }
-                      if (cell.column.Header === "Estatus") {
-                        return (
-                          <td
-                            {...cell.getCellProps()}
-                            className={styles.table_body_td}
-                          >
-                            <span
-                              className={`w-12 h-12 rounded-full ${
-                                row.original.IsDeleted
-                                  ? "bg-red-300"
-                                  : "bg-green-200"
-                              } px-4 py-2`}
-                            >
-                              {!row.original.IsDeleted ? "active" : "inactivo"}
-                            </span>
-                          </td>
-                        );
-                      }
-                      return (
-                        <td
-                          {...cell.getCellProps()}
-                          className={styles.table_body_td}
-                        >
-                          {cell.render("Cell")}
-                        </td>
-                      );
-                    })}
-                    <td
-                      className={styles.table_body_td}
+              {data &&
+                rows.map((row, i) => {
+                  prepareRow(row);
+                  return (
+                    <tr
+                      {...row.getRowProps()}
+                      className={styles.table_body_tr}
                       onClick={() => {
-                        deleteObject(row.original._id);
+                        handleSelect(row);
                       }}
                     >
-                      <AiOutlineDelete />
-                    </td>
-                  </tr>
-                );
-              })}
+                      {row.cells.map((cell) => {
+                        if (cell.column.Header === "Image") {
+                          return (
+                            <td
+                              {...cell.getCellProps()}
+                              className={styles.table_body_td}
+                            >
+                              <img
+                                src={row.original.images[0]}
+                                className="w-12 h-12 rounded-lg"
+                              />
+                            </td>
+                          );
+                        }
+                        if (cell.column.Header === "Estatus") {
+                          return (
+                            <td
+                              {...cell.getCellProps()}
+                              className={styles.table_body_td}
+                            >
+                              <span
+                                className={`w-12 h-12 rounded-full ${
+                                  row.original.IsDeleted
+                                    ? "bg-red-300"
+                                    : "bg-green-200"
+                                } px-4 py-2`}
+                              >
+                                {!row.original.IsDeleted
+                                  ? "active"
+                                  : "inactivo"}
+                              </span>
+                            </td>
+                          );
+                        }
+                        return (
+                          <td
+                            {...cell.getCellProps()}
+                            className={styles.table_body_td}
+                          >
+                            {cell.render("Cell")}
+                          </td>
+                        );
+                      })}
+                      <td
+                        className={styles.table_body_td}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          deleteObject(row.original._id);
+                        }}
+                      >
+                        <AiOutlineDelete />
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
+        {data.length < 1 && (
+          <h1 className="text-lg text-neutral-400 flex w-full justify-center my-4">
+            No hay datos!
+          </h1>
+        )}
       </div>
     </>
   );

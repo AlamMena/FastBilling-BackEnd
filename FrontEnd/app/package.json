@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@firebase/auth": "^0.20.3",
+    "@firebase/storage": "^0.9.8",
     "axios": "^0.27.2",
     "firebase": "^9.8.3",
     "next": "12.1.6",

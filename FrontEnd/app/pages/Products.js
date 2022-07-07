@@ -8,6 +8,8 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
+  const [alertType, setAlertType] = useState();
+  const [alertDescription, setAlertDescription] = useState();
   const [alertOpen, setAlertOpen] = useState(false);
   const { axiosInstance } = useAxios();
 
@@ -21,11 +23,21 @@ export default function Products() {
     }
   };
 
+  const handleAlert = (description, type) => {
+    setAlertType(type);
+    setAlertDescription(description);
+    setAlertOpen(true);
+    setTimeout(() => {
+      setAlertOpen(false);
+    }, 2000);
+  };
   const deleteObjectAsync = async (id) => {
     try {
       await axiosInstance.delete(`v1/product?id=${id}`);
       await getProductsAsync();
+      handleAlert("Producto eliminado exitosamente", "Success");
     } catch (error) {
+      handleAlert("Ha ocurrido un error eliminando un producto", "Error");
       console.log(error);
     }
   };
@@ -41,7 +53,7 @@ export default function Products() {
     },
     {
       Header: "Image",
-      accessor: "image",
+      accessor: "images",
     },
     {
       Header: "Nombre",
@@ -95,10 +107,10 @@ export default function Products() {
           getData={getProductsAsync}
           defaultData={selectedItem}
           setPopUpIsOpen={handleOpenPupOp}
-          setAlertOpen={setAlertOpen}
+          handleAlert={handleAlert}
         />
       </div>
-      {alertOpen && <Alert />}
+      {alertOpen && <Alert description={alertDescription} type={alertType} />}
     </>
   );
 }

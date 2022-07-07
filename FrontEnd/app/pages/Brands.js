@@ -10,6 +10,8 @@ export default function Brands() {
 
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
+  const [alertType, setAlertType] = useState();
+  const [alertDescription, setAlertDescription] = useState();
   const [alertOpen, setAlertOpen] = useState(false);
   const { axiosInstance } = useAxios();
 
@@ -23,13 +25,22 @@ export default function Brands() {
       console.log(error);
     }
   };
-
+  const handleAlert = (description, type) => {
+    setAlertType(type);
+    setAlertDescription(description);
+    setAlertOpen(true);
+    setTimeout(() => {
+      setAlertOpen(false);
+    }, 2000);
+  };
   const deleteObjectAsync = async (id) => {
     try {
       await axiosInstance.delete(`v1/brand?id=${id}`);
       await getBrandsAsync();
+      handleAlert("Marca eliminada exitosamente", "Success");
     } catch (error) {
       console.log(error);
+      handleAlert("Ha ocurrido un error eliminando la marca", "Error");
     }
   };
 
@@ -73,7 +84,7 @@ export default function Brands() {
           setAlertOpen={setAlertOpen}
         />
       </div>
-      {alertOpen && <Alert />}
+      {alertOpen && <Alert type={alertType} description={alertDescription} />}
     </>
   );
 }

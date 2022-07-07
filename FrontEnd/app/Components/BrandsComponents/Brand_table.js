@@ -97,7 +97,7 @@ export default function BrandTable({
       </div>
 
       {/* Table */}
-      <div className="bg-white mx-3 p-3 rounded-xl ">
+      <div className="bg-white px-6 py-8 rounded-xl ">
         <div className=" flex justify-between items-center px-3">
           <div className="text-lg font-semibold tracking-wide">{title}</div>
           <div className="text-lg">
@@ -148,7 +148,8 @@ export default function BrandTable({
                     })}
                     <td
                       className={styles.table_body_td}
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         deleteObject(row.original._id);
                       }}
                     >
