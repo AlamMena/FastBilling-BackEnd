@@ -1,4 +1,3 @@
-import ProductList from "../Components/ProductsComponents/Product_List";
 import { useEffect, useMemo, useState } from "react";
 import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
 import useAxios from "../Axios/axios";
@@ -46,7 +45,7 @@ export default function Products() {
     },
     {
       Header: "Nombre",
-      accessor: "description",
+      accessor: "name",
     },
     {
       Header: "Comprado",
