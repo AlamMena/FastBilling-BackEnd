@@ -57,7 +57,7 @@ class CoreController {
                 entity.CreatedAt = new Date().getDate();
                 entity.CreatedBy = (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1]; // add user id
                 yield entity.save();
-                return res.status(201).send();
+                return res.status(201).send(entity);
             }
             catch (error) {
                 return res.status(400).send(error);

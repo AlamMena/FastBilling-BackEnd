@@ -36,8 +36,10 @@ const BrandRoutes_1 = __importDefault(require("./Api/Routes/BrandRoutes"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const ProductSchema_1 = __importDefault(require("./Data/Schemas/ProductSchema"));
+const ProductSchema_1 = __importDefault(require("./Data/Schemas/Inventory/ProductSchema"));
 const mongooseAutoIncrement = __importStar(require("mongoose-auto-increment"));
+const InvoiceRoutes_1 = __importDefault(require("./Api/Routes/InvoiceRoutes"));
+const InvoiceSchema_1 = __importDefault(require("./Data/Schemas/Invoices/InvoiceSchema"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = 8080;
@@ -47,6 +49,7 @@ mongoose_1.default.connect((_a = process.env.FAST_BILLING_PRODUCTION_URI) !== nu
 // auto increments
 mongooseAutoIncrement.initialize(mongoose_1.default.connection);
 ProductSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'Products', field: 'id' });
+InvoiceSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: 'id' });
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
@@ -58,3 +61,4 @@ app.use('/api/v1/', CompanyRoutes_1.default);
 app.use('/api/v1/', ProductRoutes_1.default);
 app.use('/api/v1/', BrandRoutes_1.default);
 app.use('/api/v1/', CategoryRoutes_1.default);
+app.use('/api/v1/', InvoiceRoutes_1.default);

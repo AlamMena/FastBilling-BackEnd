@@ -1,6 +1,6 @@
 import {  Schema } from 'mongoose'
 import { CoreController } from './CoreController';
-import CategorySchema from '../../Data/Schemas/CategorySchema';
+import CategorySchema from '../../Data/Schemas/Inventory/CategorySchema';
 
 class CategoryController extends CoreController {
     constructor(modelSchema: Schema, collectionName: string) {
@@ -8,4 +8,4 @@ class CategoryController extends CoreController {
     }
 
 }
-export default new CategoryController(CategorySchema,'Categories');
+export default new CategoryController(CategorySchema,'categories');

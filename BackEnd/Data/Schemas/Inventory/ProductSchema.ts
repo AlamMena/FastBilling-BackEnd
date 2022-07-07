@@ -1,7 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-const ProductSchema = new mongoose_1.Schema({
+import mongoose, { Schema } from "mongoose";
+//@ts-ignore
+import Inc from 'mongoose-sequence';
+import CoreEntity from "../../Core/CoreModel";
+
+const ProductSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String },
     images: { type: Array },
@@ -12,11 +14,18 @@ const ProductSchema = new mongoose_1.Schema({
     sold: { type: Number, default: 0 },
     bought: { type: Number, default: 0 },
     categoryId: { type: Number },
+
+
     // 
     IsDeleted: { type: Boolean },
+
     CreatedAt: { type: Date },
     CreatedBy: { type: String },
+
     UpdatedAt: { type: Date },
     UpdatedBy: { type: String }
+
 });
-exports.default = ProductSchema;
+
+
+export default ProductSchema;

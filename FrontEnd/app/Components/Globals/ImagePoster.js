@@ -19,7 +19,7 @@ export default function ({ images, setImages, setFile }) {
   const handleImageInput = (e) => {
     const url = URL.createObjectURL(e.target.files[0]);
     setFile(e.target.files[0]);
-    setImages([...images, url]);
+    setImages([url]);
   };
 
   return (
@@ -47,6 +47,7 @@ export default function ({ images, setImages, setFile }) {
                   ></img>
                   <AiOutlineCloseCircle
                     onClick={() => {
+                      setFile()
                       setImages(images.filter((item) => item !== url)),
                         console.log(url);
                     }}

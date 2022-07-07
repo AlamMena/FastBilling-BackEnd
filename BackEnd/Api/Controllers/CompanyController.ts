@@ -1,6 +1,6 @@
 
 import { NextFunction, Response, Request } from 'express';
-import CompanySchema from '../../Data/Schemas/CompanySchema';
+import CompanySchema from '../../Data/Schemas/System/CompanySchema';
 import { Error, Schema } from 'mongoose'
 import { ErrorResponse } from '../../Exceptions/ValidationHandler';
 import { CoreController } from './CoreController';
@@ -11,4 +11,4 @@ class CompanyController extends CoreController {
     }
 
 }
-export default new CompanyController(CompanySchema,'Companies');
+export default new CompanyController(CompanySchema,'companies');

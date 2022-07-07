@@ -1,7 +1,7 @@
 
-import {  Schema } from 'mongoose'
+import { Schema } from 'mongoose'
 import { CoreController } from './CoreController';
-import BrandSchema from '../../Data/Schemas/BrandSchema';
+import BrandSchema from '../../Data/Schemas/System/BrandSchema';
 
 class BrandController extends CoreController {
     constructor(modelSchema: Schema, collectionName: string) {
@@ -9,4 +9,4 @@ class BrandController extends CoreController {
     }
 
 }
-export default new BrandController(BrandSchema,'Brands');
+export default new BrandController(BrandSchema, 'brands');

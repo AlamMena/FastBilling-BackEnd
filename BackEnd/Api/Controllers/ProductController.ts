@@ -1,5 +1,5 @@
 
-import ProductSchema from '../../Data/Schemas/ProductSchema';
+import ProductSchema from '../../Data/Schemas/Inventory/ProductSchema';
 import { Schema } from 'mongoose'
 import { CoreController } from './CoreController';
 
@@ -9,4 +9,4 @@ class ProductController extends CoreController {
     }
 
 }
-export default new ProductController(ProductSchema, 'Products');
+export default new ProductController(ProductSchema, 'products');

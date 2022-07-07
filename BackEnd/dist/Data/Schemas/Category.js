@@ -28,16 +28,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const CoreModel_1 = __importDefault(require("../Core/CoreModel"));
-const CompanySchema = new mongoose_1.Schema({
+const CategorySchema = new mongoose_1.Schema({
     Name: { type: String, required: true },
-    Identification: { type: String, required: true },
-    Address: { type: String, required: true },
-    PhoneNumber: { type: String, required: true },
     IsDeleted: { type: Boolean },
     CreatedAt: { type: Date },
     CreatedBy: { type: String },
     UpdatedAt: { type: Date },
     UpdatedBy: { type: String },
 });
-const model = mongoose_1.default.model('products', CompanySchema).discriminator('CoreModel', CoreModel_1.default);
+const model = mongoose_1.default.model('products', CategorySchema).discriminator('CoreModel', CoreModel_1.default);
 exports.default = model;

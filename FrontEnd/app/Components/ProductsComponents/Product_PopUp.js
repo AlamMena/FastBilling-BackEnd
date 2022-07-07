@@ -8,7 +8,7 @@ import {
   AiOutlineClose,
 } from "react-icons/ai";
 import styles from "../Globals/Styling/Product_Popup.module.css";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import ImagePoster from "../Globals/ImagePoster";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
@@ -36,11 +36,14 @@ export default function ProductPopUp({
 
   useEffect(() => {
     reset(defaultData);
+    setImages(defaultData.images)
+    setFile()
   }, [defaultData]);
 
   const calculateBenefit = () => {
     const data = getValues();
-    const benefit = data.price - data.cost;
+    const benefit = (100 * (data.price - data.cost) / data.price).toFixed(2);
+
     setValue("benefit", benefit);
   };
 
@@ -53,11 +56,13 @@ export default function ProductPopUp({
   };
   const upsertProductAsync = async (data) => {
     setIsLoading(true);
-
     try {
       if (file) {
         const url = await postImage();
         data.images = [url];
+      }
+      if (images.length < 1) {
+        data.images = [];
       }
       if (data._id) {
         await axiosInstance.put("v1/product", data);
@@ -82,8 +87,9 @@ export default function ProductPopUp({
       cost: 0,
       benefit: 0,
       description: "",
-      images: ["url 1", "url 2"],
     });
+    setImages([])
+    setFile()
   };
   const onSubmit = (data) => {
     upsertProductAsync(data);
@@ -101,9 +107,8 @@ export default function ProductPopUp({
             </label>
             <input
               {...register("name", { required: true })}
-              className={`${styles["form__input"]} ${
-                errors.name && styles["input_error"]
-              }`}
+              className={`${styles["form__input"]} ${errors.name && styles["input_error"]
+                }`}
               placeholder="product name"
             ></input>
             <label className={styles.label_error}>
@@ -225,7 +230,7 @@ export default function ProductPopUp({
             value="Cancelar"
             type="button"
             onClick={() => {
-              resetForm(), setPopUpIsOpen(false);
+              setPopUpIsOpen(false);
             }}
             className={styles.cancel_button}
           >

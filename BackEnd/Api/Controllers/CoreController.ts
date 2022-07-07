@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose, { model, Model, mongo, Schema } from "mongoose";
-import CompanySchema from "../../Data/Schemas/CompanySchema";
+import CompanySchema from "../../Data/Schemas/System/CompanySchema";
 import { ErrorResponse } from "../../Exceptions/ValidationHandler";
 
 
@@ -44,7 +44,7 @@ export class CoreController {
             return res.status(200).send(entities);
         }
         catch (error) {
-            return res.status(500).send({message:'An error has ocurred'})
+            return res.status(500).send({ message: 'An error has ocurred' })
         }
     }
 
@@ -63,7 +63,7 @@ export class CoreController {
 
             await entity.save();
 
-            return res.status(201).send();
+            return res.status(201).send(entity);
 
         } catch (error) {
             return res.status(400).send(error);
@@ -125,8 +125,8 @@ export class CoreController {
 
         const item = model.find({ id: id });
 
-        if (item === null) { 
-            res.status(404).send({message:'Resource not found'})
+        if (item === null) {
+            res.status(404).send({ message: 'Resource not found' })
         }
         return res.status(200).send(item);
     }

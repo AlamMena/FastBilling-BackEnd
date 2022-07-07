@@ -1,4 +1,5 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import CoreModel from "../../Core/CoreModel";
 
 const BrandSchema = new Schema({
     name: { type: String, required: true },
