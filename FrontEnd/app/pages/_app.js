@@ -34,7 +34,6 @@ function MyApp({ Component, pageProps }) {
               {/* Content grid */}
               <div className="col-span-12">
                 <div className="mb-10 overflow-x-hidden col-span-12 md:col-span-10 lg:col-span-12 mt-10 mx-5">
-                  {/* <DashboardCard /> */}
                   <Component {...pageProps} />
                 </div>
               </div>
