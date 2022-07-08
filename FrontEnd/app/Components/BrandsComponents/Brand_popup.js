@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import styles from "../Globals/Styling/Brands_PopUp.module.css";
+import styles from "../Globals/Styling/Product_PopUp.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
@@ -9,7 +9,7 @@ export default function BrandPopUp({
   getData,
   defaultData,
   setPopUpIsOpen,
-  setAlertOpen,
+  handleAlert,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const { axiosInstance } = useAxios();
@@ -39,12 +39,12 @@ export default function BrandPopUp({
         resetForm();
         setPopUpIsOpen(false);
         getData();
-        setAlertOpen(true);
-        setTimeout(() => {
-          setAlertOpen(false);
-        }, 2000);
-      }, 1000);
+        handleAlert("Marca guardada exitosamente", "Success");
+      });
     } catch (error) {
+      handleAlert("Ha ocurrido un error guardando la marca", "Error");
+      cl;
+      setIsLoading(false);
       console.log(error);
     }
   };

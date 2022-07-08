@@ -20,7 +20,6 @@ export default function Menu() {
       title: "Dashboard",
       path: "/",
       icon: <AiOutlineHome />,
-      active: true,
     },
     {
       title: "Estadisticas",
@@ -30,7 +29,7 @@ export default function Menu() {
 
     {
       title: "Vision general",
-      path: "/",
+      path: "/Brands",
       icon: <AiOutlineFundView />,
     },
     {
@@ -50,7 +49,9 @@ export default function Menu() {
         }`}
       >
         <div className={styles.dashboard_icons}>{item.icon}</div>
-        <p className={styles.dashboard_elements_p}>{item.title}</p>
+        <p className={styles.dashboard_elements_p} path={item.path}>
+          {item.title}
+        </p>
       </div>
     );
   });

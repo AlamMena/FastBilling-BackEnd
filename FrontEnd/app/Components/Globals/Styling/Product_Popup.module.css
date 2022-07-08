@@ -1,6 +1,6 @@
-/* .form{
-    @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min font-semibold text-sm shadow-lg text-black
-} */
+.form{
+    @apply m-7 bg-gray-100 max-w-lg rounded-2xl min-w-min  font-semibold text-sm shadow-lg text-black
+}
 .form_container {
   @apply fixed flex items-center justify-center inset-0 bg-opacity-60 bg-black;
 }
@@ -39,15 +39,15 @@
 }
 
 .title {
-  @apply text-lg flex justify-between items-center;
+  @apply text-lg flex justify-between items-center mb-2 ;
 }
 
 .loading_container {
-  @apply flex space-x-2 justify-end mt-4 mb-2;
+  @apply flex space-x-2 justify-end mt-5 mb-2;
 }
 
 .create_button {
-  @apply bg-blue-600 text-white px-4 py-2 rounded-lg;
+  @apply hover:bg-gray-200 text-black px-4 py-2 rounded-lg;
 }
 
 .cancel_button {

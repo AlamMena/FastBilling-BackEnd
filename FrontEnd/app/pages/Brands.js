@@ -82,6 +82,7 @@ export default function Brands() {
           defaultData={selectedItem}
           setPopUpIsOpen={handleOpenPupOp}
           setAlertOpen={setAlertOpen}
+          handleAlert={handleAlert}
         />
       </div>
       {alertOpen && <Alert type={alertType} description={alertDescription} />}

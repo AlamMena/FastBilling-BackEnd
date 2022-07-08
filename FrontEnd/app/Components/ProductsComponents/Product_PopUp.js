@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  AiFillExclamationCircle,
-  AiFillFileExclamation,
-  AiOutlineExclamation,
-  AiOutlineExclamationCircle,
-  AiOutlineWarning,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { AiFillExclamationCircle } from "react-icons/ai";
 import styles from "../Globals/Styling/Product_Popup.module.css";
 import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
@@ -68,7 +61,7 @@ export default function ProductPopUp({
       resetForm();
       setPopUpIsOpen(false);
       getData();
-      handleAlert("producto guardado exitosamente", "Success");
+      handleAlert("Producto guardado exitosamente", "Success");
     } catch (error) {
       handleAlert("Ha ocurrido un error guardando el producto", "Error");
       setIsLoading(false);
@@ -91,7 +84,7 @@ export default function ProductPopUp({
   return (
     <div className={styles.form_container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={styles.title}>Products</h1>
+        <h1 className={styles.title}>Añadir Producto</h1>
         <div className={styles.form_row}>
           {/* name */}
           <div className={styles.container__input}>
