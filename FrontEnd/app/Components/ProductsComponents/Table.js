@@ -166,7 +166,7 @@ export default function Products({
                               className={styles.table_body_td}
                             >
                               <img
-                                src={row.original.images[0]}
+                                src={!row.original.images[0] ? 'https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6' : row.original.images[0]}
                                 className="w-12 h-12 rounded-lg"
                               />
                             </td>
@@ -179,11 +179,10 @@ export default function Products({
                               className={styles.table_body_td}
                             >
                               <span
-                                className={`w-12 h-12 rounded-full ${
-                                  row.original.IsDeleted
-                                    ? "bg-red-300"
-                                    : "bg-green-200"
-                                } px-4 py-2`}
+                                className={`w-12 h-12 rounded-full ${row.original.IsDeleted
+                                  ? "bg-red-300"
+                                  : "bg-green-200"
+                                  } px-4 py-2`}
                               >
                                 {!row.original.IsDeleted
                                   ? "active"

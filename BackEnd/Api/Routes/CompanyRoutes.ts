@@ -1,5 +1,5 @@
 import { Router } from "express";
-import CompanySchema from "../../Data/Schemas/CompanySchema";
+import CompanySchema from "../../Data/Schemas/System/CompanySchema";
 import CompanyController from "../Controllers/CompanyController";
 
 const router = Router();

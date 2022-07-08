@@ -9,8 +9,10 @@ import mongoose from "mongoose";
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import { TIMEOUT } from "dns";
-import ProductSchema from "./Data/Schemas/ProductSchema";
+import ProductSchema from "./Data/Schemas/Inventory/ProductSchema";
 import * as mongooseAutoIncrement from 'mongoose-auto-increment'
+import InvoiceRoutes from "./Api/Routes/InvoiceRoutes";
+import InvoiceSchema from "./Data/Schemas/Invoices/InvoiceSchema";
 
 
 dotenv.config();
@@ -25,6 +27,8 @@ mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
 // auto increments
 mongooseAutoIncrement.initialize(mongoose.connection);
 ProductSchema.plugin(mongooseAutoIncrement.plugin, { model: 'Products', field: 'id' })
+InvoiceSchema.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: 'id' })
+
 
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
@@ -41,6 +45,8 @@ app.use('/api/v1/', CompanyRoutes);
 app.use('/api/v1/', ProductRoutes);
 app.use('/api/v1/', BrandRoutes);
 app.use('/api/v1/', CategoryRoutes);
+app.use('/api/v1/', InvoiceRoutes);
+
 
 
 
