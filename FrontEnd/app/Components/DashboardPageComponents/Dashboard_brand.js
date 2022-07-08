@@ -4,17 +4,6 @@ import {
   AiOutlineUser,
   AiOutlineHeatMap,
 } from "react-icons/ai";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
 export default function Dashboard_Brands(data) {
   const Marca = data.map((item, index) => {
     return (
