@@ -43,7 +43,7 @@ export default function BrandPopUp({
       });
     } catch (error) {
       handleAlert("Ha ocurrido un error guardando la marca", "Error");
-      cl;
+
       setIsLoading(false);
       console.log(error);
     }

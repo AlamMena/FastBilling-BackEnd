@@ -25,6 +25,7 @@ export default function Brands() {
       console.log(error);
     }
   };
+
   const handleAlert = (description, type) => {
     setAlertType(type);
     setAlertDescription(description);
