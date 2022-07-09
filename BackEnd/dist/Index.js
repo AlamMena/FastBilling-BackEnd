@@ -42,9 +42,9 @@ const InvoiceRoutes_1 = __importDefault(require("./Api/Routes/InvoiceRoutes"));
 const InvoiceSchema_1 = __importDefault(require("./Data/Schemas/Invoices/InvoiceSchema"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 mongoose_1.default.connect((_a = process.env.FAST_BILLING_PRODUCTION_URI) !== null && _a !== void 0 ? _a : "", function (res) {
-    console.log('connected');
+    console.log('connected to mongodb');
 });
 // auto increments
 mongooseAutoIncrement.initialize(mongoose_1.default.connection);
@@ -53,6 +53,7 @@ InvoiceSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'invoices'
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
+app.get('', (req, res) => { res.send('here'); });
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)());
@@ -62,3 +63,4 @@ app.use('/api/v1/', ProductRoutes_1.default);
 app.use('/api/v1/', BrandRoutes_1.default);
 app.use('/api/v1/', CategoryRoutes_1.default);
 app.use('/api/v1/', InvoiceRoutes_1.default);
+module.exports = app;

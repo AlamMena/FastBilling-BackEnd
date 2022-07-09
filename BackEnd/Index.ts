@@ -17,10 +17,10 @@ import InvoiceSchema from "./Data/Schemas/Invoices/InvoiceSchema";
 
 dotenv.config();
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
-    console.log('connected');
+    console.log('connected to mongodb');
 });
 
 
@@ -33,6 +33,7 @@ InvoiceSchema.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: '
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
+app.get('', (req, res) => { res.send('here') })
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -47,6 +48,8 @@ app.use('/api/v1/', BrandRoutes);
 app.use('/api/v1/', CategoryRoutes);
 app.use('/api/v1/', InvoiceRoutes);
 
+
+module.exports = app;
 
 
 

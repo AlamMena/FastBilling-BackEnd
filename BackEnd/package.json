@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.ts",
+    "start": "node index.ts",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
   "author": "",
@@ -29,6 +32,7 @@
     "firebase-admin": "^10.2.0",
     "mongoose": "^6.4.4",
     "mongoose-auto-increment": "^5.0.1",
-    "mongoose-sequence": "^5.3.1"
+    "mongoose-sequence": "^5.3.1",
+    "vercel": "^27.0.0"
   }
 }
