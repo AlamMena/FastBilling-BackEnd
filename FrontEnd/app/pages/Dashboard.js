@@ -14,9 +14,8 @@ export default function Dashboard() {
 
   const getBrandsAsync = async () => {
     try {
-      const { data } = await axiosInstance.get("v1/brands?page=1&limit=20");
-      console.log(data);
-
+      const response = await axiosInstance.get("v1/brands?page=1&limit=20");
+      console.log(response);
       setBrands(data.filter((item) => item.IsDeleted === false));
     } catch (error) {
       console.log(error);
@@ -25,6 +24,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getBrandsAsync();
+    console.log(brands);
   }, []);
 
   return (
