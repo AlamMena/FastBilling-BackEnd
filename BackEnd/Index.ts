@@ -17,7 +17,7 @@ import InvoiceSchema from "./Data/Schemas/Invoices/InvoiceSchema";
 
 dotenv.config();
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
     console.log('connected');
@@ -30,7 +30,7 @@ ProductSchema.plugin(mongooseAutoIncrement.plugin, { model: 'Products', field: '
 InvoiceSchema.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: 'id' })
 
 
-app.listen('5000', () => {
+app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
 app.get('', (req, res) => { res.send('here') })
