@@ -2,7 +2,7 @@
   "version": 2,
   "Builds": [
     {
-      "src": "./index.ts",
+      "src": "./dist/index.js",
       "use": "@varcel/node"
     }
   ]
