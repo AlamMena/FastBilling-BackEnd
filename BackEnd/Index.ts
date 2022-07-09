@@ -20,7 +20,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.FAST_BILLING_PRODUCTION_URI ?? "", function (res) {
-    console.log('connected');
+    console.log('connected to mongodb');
 });
 
 
