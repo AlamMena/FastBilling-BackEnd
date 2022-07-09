@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import styles from "../Globals/Styling/Product_PopUp.module.css";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
 
 export default function BrandPopUp({
   getData,
   defaultData,
-  setPopUpIsOpen,
+  setBrandPopUp,
   handleAlert,
 }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,11 +33,10 @@ export default function BrandPopUp({
       } else {
         await axiosInstance.post("v1/brand", data);
       }
-      // setPopUpIsOpen(false);
       setTimeout(() => {
         setIsLoading(false);
         resetForm();
-        setPopUpIsOpen(false);
+        setBrandPopUp(false);
         getData();
         handleAlert("Marca guardada exitosamente", "Success");
       });
@@ -59,7 +58,7 @@ export default function BrandPopUp({
 
   return (
     <div className={styles.form_container}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.brand_form} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={styles.title}>Marca</h1>
         <div className={styles.form_row}>
           {/* name */}
@@ -128,7 +127,7 @@ export default function BrandPopUp({
             value="Cancelar"
             type="button"
             onClick={() => {
-              resetForm(), setPopUpIsOpen(false);
+              resetForm(), setBrandPopUp(false);
             }}
             className={styles.cancel_button}
           >

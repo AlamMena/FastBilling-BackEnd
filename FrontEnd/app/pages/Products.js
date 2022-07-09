@@ -3,10 +3,14 @@ import ProductPopUp from "../Components/ProductsComponents/Product_PopUp";
 import useAxios from "../Axios/axios";
 import Alert from "../Components/AlertsComponents/Alert";
 import Table from "../Components/ProductsComponents/Table";
+import Chart from "../Components/ProductsComponents/Brand_chart";
+import BrandPopUp from "../Components/BrandsComponents/Brand_popup";
 
 export default function Products() {
+  const [brands, setBrands] = useState([]);
   const [products, setProducts] = useState([]);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
+  const [brandPopUp, setBrandPopUp] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const [alertType, setAlertType] = useState();
   const [alertDescription, setAlertDescription] = useState();
@@ -16,13 +20,21 @@ export default function Products() {
   const getProductsAsync = async () => {
     try {
       const { data } = await axiosInstance.get("v1/products?page=1&limit=200");
-      console.log(data);
       setProducts(data.filter((item) => item.IsDeleted === false));
     } catch (error) {
       console.log(error);
     }
   };
 
+  const getBrandsAsync = async () => {
+    try {
+      const { data } = await axiosInstance.get("v1/brands?page=1&limit=20");
+      console.log(data);
+      setBrands(data.filter((item) => item.IsDeleted === false));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleAlert = (description, type) => {
     setAlertType(type);
     setAlertDescription(description);
@@ -42,8 +54,20 @@ export default function Products() {
     }
   };
 
+  const deleteBrandAsync = async (id) => {
+    try {
+      await axiosInstance.delete(`v1/brand?id=${id}`);
+      await getBrandsAsync();
+      handleAlert("Marca eliminada exitosamente", "Success");
+    } catch (error) {
+      handleAlert("Ha ocurrido un error eliminando la marca", "Error");
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getProductsAsync();
+    getBrandsAsync();
   }, []);
 
   const columns = useMemo(() => [
@@ -93,15 +117,34 @@ export default function Products() {
       setPopUpIsOpen(true);
     }
   };
+
+  const handleBrandPopUp = () => {
+    if (brandPopUp) {
+      setBrandPopUp(false);
+    } else {
+      setBrandPopUp(true);
+    }
+  };
   return (
     <>
-      <Table
-        columns={columns}
-        data={products}
-        setObject={setSelectedItem}
-        deleteObject={deleteObjectAsync}
-        setPopUpIsOpen={handleOpenPupOp}
-      />
+      <div className="grid grid-cols-12">
+        <div className=" col-span-12 md:col-span-7">
+          <Table
+            columns={columns}
+            data={products}
+            setObject={setSelectedItem}
+            deleteObject={deleteObjectAsync}
+            setPopUpIsOpen={handleOpenPupOp}
+          />
+        </div>
+        <div className=" col-span-12 md:col-span-5">
+          <Chart
+            marcas={brands}
+            setBrandPopUp={handleBrandPopUp}
+            deleteBrand={deleteBrandAsync}
+          />
+        </div>
+      </div>
       <div className={`${!popUpIsOpen && "hidden"} flex`}>
         <ProductPopUp
           getData={getProductsAsync}
@@ -110,6 +153,16 @@ export default function Products() {
           handleAlert={handleAlert}
         />
       </div>
+      <div className={`${!brandPopUp && "hidden"} flex`}>
+        <BrandPopUp
+          getData={getBrandsAsync}
+          defaultData={selectedItem}
+          setBrandPopUp={handleBrandPopUp}
+          setAlertOpen={setAlertOpen}
+          handleAlert={handleAlert}
+        />
+      </div>
+
       {alertOpen && <Alert description={alertDescription} type={alertType} />}
     </>
   );

@@ -29,13 +29,13 @@ export default function ProductPopUp({
 
   useEffect(() => {
     reset(defaultData);
-    setImages(defaultData.images)
-    setFile()
+    setImages(defaultData.images);
+    setFile();
   }, [defaultData]);
 
   const calculateBenefit = () => {
     const data = getValues();
-    const benefit = (100 * (data.price - data.cost) / data.price).toFixed(2);
+    const benefit = ((100 * (data.price - data.cost)) / data.price).toFixed(2);
 
     setValue("benefit", benefit);
   };
@@ -81,8 +81,8 @@ export default function ProductPopUp({
       benefit: 0,
       description: "",
     });
-    setImages([])
-    setFile()
+    setImages([]);
+    setFile();
   };
   const onSubmit = (data) => {
     upsertProductAsync(data);
@@ -100,8 +100,9 @@ export default function ProductPopUp({
             </label>
             <input
               {...register("name", { required: true })}
-              className={`${styles["form__input"]} ${errors.name && styles["input_error"]
-                }`}
+              className={`${styles["form__input"]} ${
+                errors.name && styles["input_error"]
+              }`}
               placeholder="product name"
             ></input>
             <label className={styles.label_error}>
