@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "Builds": [
+    {
+      "src": "./index.ts",
+      "use": "@varcel/node"
+    }
+  ]
+}
