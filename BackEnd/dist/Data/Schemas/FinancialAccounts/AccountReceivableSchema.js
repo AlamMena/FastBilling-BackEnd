@@ -25,6 +25,13 @@ const AccountReceivableSchema = new mongoose_1.Schema({
     total: { type: Number, default: 0 },
     balance: { type: Number, default: 0 },
     document: { type: String },
+    transactions: [{
+            Amount: { type: Number, default: 0 },
+            Date: { type: Date },
+            sign: { type: Number },
+            document: { type: String },
+            refNo: { type: Number }
+        }],
     // default
     IsDeleted: { type: Boolean },
     CreatedAt: { type: Date },
