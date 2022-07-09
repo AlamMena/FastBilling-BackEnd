@@ -53,7 +53,7 @@ InvoiceSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'invoices'
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
-app.route('/').get((req, res) => { res.send('here'); });
+app.get('', (req, res) => { res.send('here'); });
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)());

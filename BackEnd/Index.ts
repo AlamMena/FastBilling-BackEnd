@@ -33,7 +33,7 @@ InvoiceSchema.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: '
 app.listen(PORT, () => {
     console.log(`Excuting on port:${PORT}`);
 });
-app.route('/').get((req, res) => { res.send('here') })
+app.get('', (req, res) => { res.send('here') })
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
