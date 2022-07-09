@@ -63,3 +63,4 @@ app.use('/api/v1/', ProductRoutes_1.default);
 app.use('/api/v1/', BrandRoutes_1.default);
 app.use('/api/v1/', CategoryRoutes_1.default);
 app.use('/api/v1/', InvoiceRoutes_1.default);
+module.exports = app;

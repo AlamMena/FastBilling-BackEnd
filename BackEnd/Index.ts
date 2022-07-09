@@ -49,6 +49,8 @@ app.use('/api/v1/', CategoryRoutes);
 app.use('/api/v1/', InvoiceRoutes);
 
 
+module.exports = app;
+
 
 
 
