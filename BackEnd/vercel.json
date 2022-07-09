@@ -1,9 +1,4 @@
 {
   "version": 2,
-  "Builds": [
-    {
-      "src": "./dist/index.js",
-      "use": "@varcel/node"
-    }
-  ]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "./dist" }]
 }
