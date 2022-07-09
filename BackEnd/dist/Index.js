@@ -50,7 +50,7 @@ mongoose_1.default.connect((_a = process.env.FAST_BILLING_PRODUCTION_URI) !== nu
 mongooseAutoIncrement.initialize(mongoose_1.default.connection);
 ProductSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'Products', field: 'id' });
 InvoiceSchema_1.default.plugin(mongooseAutoIncrement.plugin, { model: 'invoices', field: 'id' });
-app.listen(PORT, () => {
+app.listen('5000', () => {
     console.log(`Excuting on port:${PORT}`);
 });
 app.get('', (req, res) => { res.send('here'); });
