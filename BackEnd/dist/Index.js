@@ -44,7 +44,7 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 8080;
 mongoose_1.default.connect((_a = process.env.FAST_BILLING_PRODUCTION_URI) !== null && _a !== void 0 ? _a : "", function (res) {
-    console.log('connected');
+    console.log('connected to mongodb');
 });
 // auto increments
 mongooseAutoIncrement.initialize(mongoose_1.default.connection);
