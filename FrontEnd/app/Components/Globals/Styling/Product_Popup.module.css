@@ -7,11 +7,6 @@
 .form {
   @apply bg-white md:max-w-xl md:max-h-[500px] h-full rounded-none  overflow-y-scroll md:rounded-lg min-w-min px-4 py-6 text-sm;
 }
-
-.brand_form{
-    @apply bg-white h-4/6 w-4/5 md:w-2/5 rounded-none overflow-y-scroll md:rounded-lg min-w-min px-4 py-6 text-sm;
-}
-
 .form_row {
   @apply flex py-3;
 }

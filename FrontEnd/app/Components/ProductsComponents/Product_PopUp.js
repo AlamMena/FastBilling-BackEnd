@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import styles from "../Globals/Styling/Product_Popup.module.css";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import useAxios from "../../Axios/axios";
 import ImagePoster from "../Globals/ImagePoster";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";

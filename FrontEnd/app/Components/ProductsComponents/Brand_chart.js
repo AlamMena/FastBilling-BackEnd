@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export default function Dashboard_Brands({
   marcas,
   getData,
-  // deleteBrand,
+  deleteBrand,
   setBrandPopUp,
   handleAlert,
 }) {
